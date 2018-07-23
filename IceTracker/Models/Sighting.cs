@@ -110,26 +110,24 @@ namespace IceTracker.Models
             {
                 conn.Dispose();
             }
-           
+
             string result = String.Join(", ", fullAddress.ToArray());
             Console.WriteLine(result);
             return result;
-           
-        }
-
 
         }
 
-        //public static async void asyncConvertToLatLongAsync()
-        //{
-        //    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
+        public static async void asyncConvertToLatLongAsync(string address)
+        {
+            IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
 
 
-        //    IEnumerable<Address> addresses = await geocoder.GeocodeAsync("1600 pennsylvania ave washington dc");
-        //    Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-        //    Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437 
+            IEnumerable<Address> addresses = await geocoder.GeocodeAsync(address);
+            Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
+            Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437 
 
 
-        //}
+        }
 
+    }
 }

@@ -11,8 +11,8 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-            Sighting.GetLastAddress();
-            //Sighting.asyncConvertToLatLongAsync();
+            
+            Sighting.asyncConvertToLatLongAsync(Sighting.GetLastAddress());
             return View();
         }
 
