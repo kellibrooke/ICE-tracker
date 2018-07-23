@@ -11,10 +11,11 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-        Sighting newSighting = new Sighting("dog");
-        //Task<List<double>> coordinates = newSighting.ConvertToLatLongAsync();
+            DateTime thisDate1 = new DateTime(2011, 6, 10);
+            Sighting newSighting = new Sighting("New description", thisDate1, "Address", "city", "state", "zip");
+            List<Sighting> allSightings = Sighting.GetSightings();
             newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
-            return View();
+            return View(allSightings);
         }
 
         public IActionResult About()

@@ -12,11 +12,25 @@ namespace IceTracker.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public DateTime Time { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public Double Lat { get; set; }
+        public Double Lng { get; set; }
 
-        public Sighting(string descriptionInput, int idInput = 0)
+        public Sighting(string description, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int id = 0)
         {
-            Id = idInput;
-            Description = descriptionInput;   
+            Id = id;
+            Description = description;
+            Time = time;
+            Address = address;
+            City = city;
+            State = state;
+            Zip = zip;
+            Lat = lat;
+            Lng = lng;
         }
 
         public void Save()
@@ -118,40 +132,40 @@ namespace IceTracker.Models
 
         }
 
-        //public async Task<List<double>> ConvertToLatLongAsync(string address)
-        //{
-        //    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
-        //    List<double> coordinates = new List<double>();
+        public static List<Sighting> GetSightings()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<Sighting> allSightings = new List<Sighting>();
 
-        //    IEnumerable<Address> addresses = await geocoder.GeocodeAsync(address);
-        //    coordinates.Add(addresses.First().Coordinates.Latitude);
-        //    coordinates.Add(addresses.First().Coordinates.Longitude);
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM sightings";
 
-        //    return coordinates;
-        //}
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string description = rdr.GetString(1);
+                DateTime time = rdr.GetDateTime(2);
+                string address = rdr.GetString(3);
+                string city = rdr.GetString(4);
+                string state = rdr.GetString(5);
+                string zip = rdr.GetString(6);
+                double lat = rdr.GetDouble(7);
+                double lng = rdr.GetDouble(8);
 
-        //public static void UpdateSightingWithCoordinates(List<double> coordinates)
-        //{
-        //    Double latitude = coordinates[0];
-        //    Double longitude = coordinates[1];
+                Sighting newSighting = new Sighting(description, time, address, city, state, zip, lat, lng, id);
+                allSightings.Add(newSighting);
+            }
 
-        //    MySqlConnection conn = DB.Connection();
-        //    conn.Open();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
 
-        //    MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-        //    cmd.CommandText = @"UPDATE sightings SET lat = @Latitude, lng = @Longitude ORDER BY id DESC LIMIT 1";
-
-        //    cmd.Parameters.AddWithValue("@Latitude", latitude);
-        //    cmd.Parameters.AddWithValue("@Longitude", longitude);
-
-        //    cmd.ExecuteNonQuery();
-
-        //    conn.Close();
-        //    if (conn != null)
-        //    {
-        //        conn.Dispose();
-        //    }
-        //}
+            return allSightings;
+        }
 
         public async void ConvertToLatLongAsync(string address)
         {
