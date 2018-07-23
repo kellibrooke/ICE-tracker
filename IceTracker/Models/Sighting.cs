@@ -44,9 +44,14 @@ namespace IceTracker.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO sightings (description) VALUES (@SightingDescription);";
+            cmd.CommandText = @"INSERT INTO sightings (description, date_time, address, city, state, zip) VALUES (@SightingDescription, @SightingDateTime, @SightingAddress, @SightingCity, @SightingState, @SightingZip);";
 
             cmd.Parameters.AddWithValue("@SightingDescription", Description);
+            cmd.Parameters.AddWithValue("@SightingDateTime", Time);
+            cmd.Parameters.AddWithValue("@SightingAddress", Address);
+            cmd.Parameters.AddWithValue("@SightingCity", City);
+            cmd.Parameters.AddWithValue("@SightingState", State);
+            cmd.Parameters.AddWithValue("@SightingZip", Zip);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;
@@ -73,7 +78,7 @@ namespace IceTracker.Models
                 var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+19718034174"),
-                    body: this.Description);
+                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ", " + this.Zip + ". Details: " + this.Description);
 
                 Console.WriteLine(message.Sid);
             }
