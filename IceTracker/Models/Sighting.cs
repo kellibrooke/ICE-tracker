@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Geocoding;
+using Geocoding.Google;
 using MySql.Data.MySqlClient;
 
 namespace IceTracker.Models
@@ -75,5 +79,57 @@ namespace IceTracker.Models
                 return (descriptionEquality);
             }
         }
-    }
+
+        public static string GetLastAddress()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<string> fullAddress = new List<string>();
+
+
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT id, address, city, state, zip FROM sightings ORDER BY id DESC LIMIT 1";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string address = rdr.GetString(1);
+                string city = rdr.GetString(2);
+                string state = rdr.GetString(3);
+                string zip = rdr.GetString(4);
+                fullAddress.Add(address);
+                fullAddress.Add(city);
+                fullAddress.Add(state);
+                fullAddress.Add(zip);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+           
+            string result = String.Join(", ", fullAddress.ToArray());
+            Console.WriteLine(result);
+            return result;
+           
+        }
+
+
+        }
+
+        //public static async void asyncConvertToLatLongAsync()
+        //{
+        //    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
+
+
+        //    IEnumerable<Address> addresses = await geocoder.GeocodeAsync("1600 pennsylvania ave washington dc");
+        //    Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
+        //    Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437 
+
+
+        //}
+
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using IceTracker.Models;
 
 namespace IceTracker.Controllers
 {
@@ -10,6 +11,8 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
+            Sighting.GetLastAddress();
+            //Sighting.asyncConvertToLatLongAsync();
             return View();
         }
 
