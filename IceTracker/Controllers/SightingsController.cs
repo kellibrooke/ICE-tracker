@@ -17,19 +17,21 @@ namespace IceTracker.Controllers
             return View();
         }
 
-        [HttpGet("/sightings/save")]
-        public IActionResult CreateForm()
+        [HttpGet("/sightings/{id}/save")]
+        public IActionResult CreateForm(int id)
         {
-            return View();
+            User newUser = IceTracker.Models.User.FindAUserById(id); 
+            return View(newUser);
         }
 
-        [HttpPost("/sightings/save")]
-        public IActionResult CreateSighting(string description)
+        [HttpPost("/sightings/{idUser}/save")]
+        public IActionResult CreateSighting(string description, int idUser)
         {
             Sighting newSighting = new Sighting(description);
             newSighting.Save();
             newSighting.Alert();
-            return View("CreateForm");          
+            return RedirectToAction("UserAccount", "Users", new { id = idUser});          
         }
     }
 }
+ 
