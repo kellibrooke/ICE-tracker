@@ -4,6 +4,7 @@ using System.Linq;
 using Geocoding;
 using Geocoding.Google;
 using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 
 namespace IceTracker.Models
 {
@@ -112,20 +113,68 @@ namespace IceTracker.Models
             }
 
             string result = String.Join(", ", fullAddress.ToArray());
-            Console.WriteLine(result);
+
             return result;
 
         }
 
-        public static async void asyncConvertToLatLongAsync(string address)
+        //public async Task<List<double>> ConvertToLatLongAsync(string address)
+        //{
+        //    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
+        //    List<double> coordinates = new List<double>();
+
+        //    IEnumerable<Address> addresses = await geocoder.GeocodeAsync(address);
+        //    coordinates.Add(addresses.First().Coordinates.Latitude);
+        //    coordinates.Add(addresses.First().Coordinates.Longitude);
+
+        //    return coordinates;
+        //}
+
+        //public static void UpdateSightingWithCoordinates(List<double> coordinates)
+        //{
+        //    Double latitude = coordinates[0];
+        //    Double longitude = coordinates[1];
+
+        //    MySqlConnection conn = DB.Connection();
+        //    conn.Open();
+
+        //    MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+        //    cmd.CommandText = @"UPDATE sightings SET lat = @Latitude, lng = @Longitude ORDER BY id DESC LIMIT 1";
+
+        //    cmd.Parameters.AddWithValue("@Latitude", latitude);
+        //    cmd.Parameters.AddWithValue("@Longitude", longitude);
+
+        //    cmd.ExecuteNonQuery();
+
+        //    conn.Close();
+        //    if (conn != null)
+        //    {
+        //        conn.Dispose();
+        //    }
+        //}
+
+        public async void ConvertToLatLongAsync(string address)
         {
             IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
 
-
             IEnumerable<Address> addresses = await geocoder.GeocodeAsync(address);
-            Console.WriteLine("Formatted: " + addresses.First().FormattedAddress); //Formatted: 1600 Pennsylvania Ave SE, Washington, DC 20003, USA
-            Console.WriteLine("Coordinates: " + addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude); //Coordinates: 38.8791981, -76.9818437 
 
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE sightings SET lat = @Latitude, lng = @Longitude ORDER BY id DESC LIMIT 1";
+
+            cmd.Parameters.AddWithValue("@Latitude", addresses.First().Coordinates.Latitude);
+            cmd.Parameters.AddWithValue("@Longitude", addresses.First().Coordinates.Longitude);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
 
         }
 

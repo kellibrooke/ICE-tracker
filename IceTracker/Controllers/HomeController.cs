@@ -11,8 +11,9 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-            
-            Sighting.asyncConvertToLatLongAsync(Sighting.GetLastAddress());
+        Sighting newSighting = new Sighting("dog");
+        //Task<List<double>> coordinates = newSighting.ConvertToLatLongAsync();
+            newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             return View();
         }
 
