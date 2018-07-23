@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Geocoding;
+using Geocoding.Google;
 using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
 using Twilio;
@@ -13,11 +17,25 @@ namespace IceTracker.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public DateTime Time { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public Double Lat { get; set; }
+        public Double Lng { get; set; }
 
-        public Sighting(string descriptionInput, int idInput = 0)
+        public Sighting(string description, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int id = 0)
         {
-            Id = idInput;
-            Description = descriptionInput;   
+            Id = id;
+            Description = description;
+            Time = time;
+            Address = address;
+            City = city;
+            State = state;
+            Zip = zip;
+            Lat = lat;
+            Lng = lng;
         }
 
         public void Save()
@@ -26,9 +44,14 @@ namespace IceTracker.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO sightings (description) VALUES (@SightingDescription);";
+            cmd.CommandText = @"INSERT INTO sightings (description, date_time, address, city, state, zip) VALUES (@SightingDescription, @SightingDateTime, @SightingAddress, @SightingCity, @SightingState, @SightingZip);";
 
             cmd.Parameters.AddWithValue("@SightingDescription", Description);
+            cmd.Parameters.AddWithValue("@SightingDateTime", Time);
+            cmd.Parameters.AddWithValue("@SightingAddress", Address);
+            cmd.Parameters.AddWithValue("@SightingCity", City);
+            cmd.Parameters.AddWithValue("@SightingState", State);
+            cmd.Parameters.AddWithValue("@SightingZip", Zip);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;
@@ -55,7 +78,7 @@ namespace IceTracker.Models
                 var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+19718034174"),
-                    body: this.Description);
+                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ", " + this.Zip + ". Details: " + this.Description);
 
                 Console.WriteLine(message.Sid);
             }
@@ -77,5 +100,103 @@ namespace IceTracker.Models
                 return (descriptionEquality);
             }
         }
+
+        public static string GetLastAddress()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<string> fullAddress = new List<string>();
+
+
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT id, address, city, state, zip FROM sightings ORDER BY id DESC LIMIT 1";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string address = rdr.GetString(1);
+                string city = rdr.GetString(2);
+                string state = rdr.GetString(3);
+                string zip = rdr.GetString(4);
+                fullAddress.Add(address);
+                fullAddress.Add(city);
+                fullAddress.Add(state);
+                fullAddress.Add(zip);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            string result = String.Join(", ", fullAddress.ToArray());
+
+            return result;
+
+        }
+
+        public static List<Sighting> GetSightings()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<Sighting> allSightings = new List<Sighting>();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM sightings";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string description = rdr.GetString(1);
+                DateTime time = rdr.GetDateTime(2);
+                string address = rdr.GetString(3);
+                string city = rdr.GetString(4);
+                string state = rdr.GetString(5);
+                string zip = rdr.GetString(6);
+                double lat = rdr.GetDouble(7);
+                double lng = rdr.GetDouble(8);
+
+                Sighting newSighting = new Sighting(description, time, address, city, state, zip, lat, lng, id);
+                allSightings.Add(newSighting);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return allSightings;
+        }
+
+        public async void ConvertToLatLongAsync(string address)
+        {
+            IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };
+
+            IEnumerable<Address> addresses = await geocoder.GeocodeAsync(address);
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE sightings SET lat = @Latitude, lng = @Longitude ORDER BY id DESC LIMIT 1";
+
+            cmd.Parameters.AddWithValue("@Latitude", addresses.First().Coordinates.Latitude);
+            cmd.Parameters.AddWithValue("@Longitude", addresses.First().Coordinates.Longitude);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+        }
+
     }
 }

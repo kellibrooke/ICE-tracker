@@ -5,17 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IceTracker.Models;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace IceTracker.Controllers
 {
     public class SightingsController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet("/sightings/{id}/save")]
         public IActionResult CreateForm(int id)
@@ -25,9 +18,9 @@ namespace IceTracker.Controllers
         }
 
         [HttpPost("/sightings/{idUser}/save")]
-        public IActionResult CreateSighting(string description, int idUser)
+        public IActionResult CreateSighting(string description, DateTime time, string address, string city, string state, string zip, int idUser)
         {
-            Sighting newSighting = new Sighting(description);
+            Sighting newSighting = new Sighting(description, time, address, city, state, zip);
             newSighting.Save();
             newSighting.Alert();
             return RedirectToAction("UserAccount", "Users", new { id = idUser});          
