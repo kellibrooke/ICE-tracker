@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IceTracker", "IceTracker\IceTracker.csproj", "{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB389371-F3FA-4A69-BE78-D05628C6636C}"
+	ProjectSection(SolutionItems) = preProject
+		_ice_tracker_.sql = _ice_tracker_.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
