@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Sightings\" />
   </ItemGroup>
    <ItemGroup>
     <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
