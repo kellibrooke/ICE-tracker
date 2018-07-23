@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using IceTracker.Models;
 
 namespace IceTracker.Controllers
 {
@@ -10,7 +11,11 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            DateTime thisDate1 = new DateTime(2011, 6, 10);
+            Sighting newSighting = new Sighting("New description", thisDate1, "Address", "city", "state", "zip");
+            List<Sighting> allSightings = Sighting.GetSightings();
+            newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
+            return View(allSightings);
         }
 
         public IActionResult About()
