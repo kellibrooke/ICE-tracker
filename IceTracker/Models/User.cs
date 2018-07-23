@@ -7,12 +7,16 @@ namespace IceTracker.Models
     public class User
     {
         public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
 
-        public User(string phoneNumberInput, int idInput = 0)
+        public User(string firstName, string lastName, string phoneNumberInput, int idInput = 0)
         {
             Id = idInput;
+            FirstName = firstName;
+            LastName = lastName;
             PhoneNumber = phoneNumberInput;
         }
 
