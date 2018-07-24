@@ -25,8 +25,9 @@ namespace IceTracker.Models
         public string Zip { get; set; }
         public Double Lat { get; set; }
         public Double Lng { get; set; }
+        public int UserId { get; set; }
 
-        public Sighting(string description, string type, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int id = 0)
+        public Sighting(string description, string type, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int userId = 0, int id = 0)
         {
             Id = id;
             Description = description;
@@ -38,15 +39,16 @@ namespace IceTracker.Models
             Zip = zip;
             Lat = lat;
             Lng = lng;
+            UserId = userId;
         }
 
-        public void Save()
+        public void Save(int userId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO sightings (description, type, date_time, address, city, state, zip) VALUES (@Description, @Type, @Time, @Address, @City, @State, @Zip);";
+            cmd.CommandText = @"INSERT INTO sightings (description, type, date_time, address, city, state, zip, user_id) VALUES (@Description, @Type, @Time, @Address, @City, @State, @Zip, @UserId);";
 
             cmd.Parameters.AddWithValue("@Description", Description);
             cmd.Parameters.AddWithValue("@Type", Type);
@@ -55,6 +57,7 @@ namespace IceTracker.Models
             cmd.Parameters.AddWithValue("@City", City);
             cmd.Parameters.AddWithValue("@State", State);
             cmd.Parameters.AddWithValue("@Zip", Zip);
+            cmd.Parameters.AddWithValue("@UserId", userId);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;

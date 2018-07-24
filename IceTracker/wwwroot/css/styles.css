@@ -1,0 +1,32 @@
+﻿body {
+    font-size: 14px;
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+.disclosure {
+    padding-top: 50px;
+}
+
+.btn {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.fist {
+    width: 15%;
+}
+
+navbar {
+    padding-top: -100px;
+}
+
+.jumbotron {
+    background-color: #BA4C44;
+}

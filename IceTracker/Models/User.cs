@@ -74,6 +74,51 @@ namespace IceTracker.Models
 
         }
 
+        public List<Sighting> GetAllUserSightings()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM sightings WHERE user_id = @UserId;";
+
+            cmd.Parameters.AddWithValue("@UserId", Id);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int sightingId = 0;
+            string firstName = "";
+            string lastName = "";
+            List<Sighting> allSightings = new List<Sighting>() { };
+
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string description = rdr.GetString(1);
+                string type = rdr.GetString(2);
+                DateTime time = rdr.GetDateTime(3);
+                string address = rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string state = rdr.GetString(6);
+                string zip = rdr.GetString(7);
+                double lat = rdr.GetDouble(8);
+                double lng = rdr.GetDouble(9);
+                int userId = rdr.GetInt32(10);
+
+                Sighting newSighting = new Sighting(description, type, time, address, city, state, zip, lat, lng, userId, id);
+                allSightings.Add(newSighting);
+
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return allSightings;
+        }
+
         public static User FindAUser(string phoneNumber)
         {
             MySqlConnection conn = DB.Connection();
@@ -108,6 +153,7 @@ namespace IceTracker.Models
 
             return foundUser;
         }
+
         public static User FindAUserById(int id)
         {
             MySqlConnection conn = DB.Connection();
