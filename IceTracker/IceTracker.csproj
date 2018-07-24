@@ -26,4 +26,10 @@
     <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
     <PackageReference Include="Twilio" Version="5.14.0" />
   </ItemGroup>
+   <ItemGroup>
+     <Content Remove="wwwroot\css\styles.css" />
+   </ItemGroup>
+   <ItemGroup>
+     <None Include="wwwroot\css\styles.css" />
+   </ItemGroup>
 </Project>
