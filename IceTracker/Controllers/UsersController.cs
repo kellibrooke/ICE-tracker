@@ -34,7 +34,6 @@ namespace IceTracker.Controllers
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
-
             User newUser = IceTracker.Models.User.FindAUser(phoneNumber);
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
@@ -45,6 +44,5 @@ namespace IceTracker.Controllers
             User newUser = IceTracker.Models.User.FindAUserById(id); 
             return View(newUser);
         }
-
     }
 } 

@@ -17,6 +17,7 @@ namespace IceTracker.Models
     {
         public int Id { get; set; }
         public string Description { get; set; }
+        public string Type { get; set; }
         public DateTime Time { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -25,10 +26,11 @@ namespace IceTracker.Models
         public Double Lat { get; set; }
         public Double Lng { get; set; }
 
-        public Sighting(string description, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int id = 0)
+        public Sighting(string description, string type, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int id = 0)
         {
             Id = id;
             Description = description;
+            Type = type;
             Time = time;
             Address = address;
             City = city;
@@ -44,9 +46,15 @@ namespace IceTracker.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO sightings (description) VALUES (@SightingDescription);";
+            cmd.CommandText = @"INSERT INTO sightings (description, type, date_time, address, city, state, zip) VALUES (@Description, @Type, @Time, @Address, @City, @State, @Zip);";
 
-            cmd.Parameters.AddWithValue("@SightingDescription", Description);
+            cmd.Parameters.AddWithValue("@Description", Description);
+            cmd.Parameters.AddWithValue("@Type", Type);
+            cmd.Parameters.AddWithValue("@Time", Time);
+            cmd.Parameters.AddWithValue("@Address", Address);
+            cmd.Parameters.AddWithValue("@City", City);
+            cmd.Parameters.AddWithValue("@State", State);
+            cmd.Parameters.AddWithValue("@Zip", Zip);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;
@@ -59,7 +67,6 @@ namespace IceTracker.Models
         }
 
         public void Alert()
-
         {
             List<User> allUsers = User.GetAllUsers();
 
@@ -73,14 +80,11 @@ namespace IceTracker.Models
                 var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+19718034174"),
-                    body: this.Description);
+                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ", " + this.Zip + ". Details: " + this.Description);
 
                 Console.WriteLine(message.Sid);
             }
-
         }
-
-
 
         public override bool Equals(System.Object otherSighting)
         {
@@ -147,15 +151,16 @@ namespace IceTracker.Models
             {
                 int id = rdr.GetInt32(0);
                 string description = rdr.GetString(1);
-                DateTime time = rdr.GetDateTime(2);
-                string address = rdr.GetString(3);
-                string city = rdr.GetString(4);
-                string state = rdr.GetString(5);
-                string zip = rdr.GetString(6);
-                double lat = rdr.GetDouble(7);
-                double lng = rdr.GetDouble(8);
+                string type = rdr.GetString(2);
+                DateTime time = rdr.GetDateTime(3);
+                string address = rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string state = rdr.GetString(6);
+                string zip = rdr.GetString(7);
+                double lat = rdr.GetDouble(8);
+                double lng = rdr.GetDouble(9);
 
-                Sighting newSighting = new Sighting(description, time, address, city, state, zip, lat, lng, id);
+                Sighting newSighting = new Sighting(description, type, time, address, city, state, zip, lat, lng, id);
                 allSightings.Add(newSighting);
             }
 
