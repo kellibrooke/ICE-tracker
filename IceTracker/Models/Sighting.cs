@@ -10,6 +10,7 @@ using RestSharp.Authenticators;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
+using Newtonsoft.Json;
 
 namespace IceTracker.Models
 {
@@ -80,6 +81,42 @@ namespace IceTracker.Models
 
         }
 
+        public static string GetSightings()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<Sighting> allSightings = new List<Sighting>();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM sightings";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            string markers = "[";
+            while (rdr.Read())
+            {
+                markers += "{";
+                markers += string.Format("'id': '{0}',", rdr["id"]);
+                markers += string.Format("'description': '{0}',", rdr["description"]);
+                markers += string.Format("'time': '{0}',", rdr["date_time"]);
+                markers += string.Format("'address': '{0}',", rdr["address"]);
+                markers += string.Format("'city': '{0}',", rdr["city"]);
+                markers += string.Format("'state': '{0}',", rdr["state"]);
+                markers += string.Format("'zip': '{0}',", rdr["zip"]);
+                markers += string.Format("'lat': '{0}',", rdr["lat"]);
+                markers += string.Format("'lng': '{0}'", rdr["lng"]);
+                markers += "},";
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            markers += "]";
+            return markers;
+        }
+
 
 
         public override bool Equals(System.Object otherSighting)
@@ -92,7 +129,15 @@ namespace IceTracker.Models
             {
                 Sighting newSighting = (Sighting)otherSighting;
                 bool descriptionEquality = (this.Description == newSighting.Description);
-                return (descriptionEquality);
+                bool timeEquality = (this.Time == newSighting.Time);
+                bool addressEquality = (this.Address == newSighting.Address);
+                bool cityEquality = (this.City == newSighting.City);
+                bool stateEquality = (this.State == newSighting.State);
+                bool zipEquality = (this.Zip == newSighting.Zip);
+                bool latEquality = (this.Lat == newSighting.Lat);
+                bool lngEquality = (this.Lng == newSighting.Lng);
+                bool idEquality = (this.Id == newSighting.Id);
+                return (descriptionEquality && timeEquality && addressEquality && cityEquality && stateEquality && zipEquality && latEquality && lngEquality && idEquality);
             }
         }
 
@@ -133,40 +178,6 @@ namespace IceTracker.Models
 
         }
 
-        public static List<Sighting> GetSightings()
-        {
-            MySqlConnection conn = DB.Connection();
-            conn.Open();
-            List<Sighting> allSightings = new List<Sighting>();
-
-            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT * FROM sightings";
-
-            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-            while (rdr.Read())
-            {
-                int id = rdr.GetInt32(0);
-                string description = rdr.GetString(1);
-                DateTime time = rdr.GetDateTime(2);
-                string address = rdr.GetString(3);
-                string city = rdr.GetString(4);
-                string state = rdr.GetString(5);
-                string zip = rdr.GetString(6);
-                double lat = rdr.GetDouble(7);
-                double lng = rdr.GetDouble(8);
-
-                Sighting newSighting = new Sighting(description, time, address, city, state, zip, lat, lng, id);
-                allSightings.Add(newSighting);
-            }
-
-            conn.Close();
-            if (conn != null)
-            {
-                conn.Dispose();
-            }
-
-            return allSightings;
-        }
 
         public async void ConvertToLatLongAsync(string address)
         {
