@@ -41,7 +41,7 @@ namespace IceTracker.Controllers
         [HttpGet("/users/{id}")]
         public IActionResult UserAccount(int id)
         {
-            User newUser = IceTracker.Models.User.FindAUserById(id); 
+            User newUser = IceTracker.Models.User.FindAUserById(id);
             return View(newUser);
         }
     }
