@@ -163,7 +163,9 @@ namespace IceTracker.Models
                 markers += string.Format("'state': '{0}',", rdr["state"]);
                 markers += string.Format("'zip': '{0}',", rdr["zip"]);
                 markers += string.Format("'lat': '{0}',", rdr["lat"]);
-                markers += string.Format("'lng': '{0}'", rdr["lng"]);
+                markers += string.Format("'lng': '{0}',", rdr["lng"]);
+                markers += string.Format("'type': '{0}'", rdr["type"]);
+
                 markers += "},";
             }
 

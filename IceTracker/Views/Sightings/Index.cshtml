@@ -1,9 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Report";
 }
+<script src="jquery.translate.js"/>
+<script>
+    var dict = {
+    "If you are currently witnessing an ICE raid, please report it to spread the word" : {
+    sp: "Si actualmente estás presenciando un ataque de ICE, infórmalo para difundir la palabra"
+      },
+      "Download plugin": {
+        pt: "Descarregar plugin",
+        en: "Download plugin"
+      }
+    }
 
+    var translator = $('body').translate({lang: "en", t: dict});
+    translator.lang("sp");
+    var translation = translator.get("If you are currently witnessing an ICE raid, please report it to spread the word");
+</script>
 <div class="center">
-    <h1>If you are currently witnessing an ICE raid, please report it to spread the word.</h1>
+    <h1 class="trn">If you are currently witnessing an ICE raid, please report it to spread the word.</h1>
     <p>Your sighting details will immediately notify all indivduals who have signed up for alerts in your area.</p><br />
     <a href="sightings/" class="btn btn-danger">Report</a>
 
