@@ -25,12 +25,12 @@ namespace IceTracker.Controllers
         }
 
         [HttpPost("/sightings/{idUser}/save")]
-        public IActionResult CreateSighting(string description, int idUser)
+        public IActionResult CreateSighting(string description, string type, DateTime time, string address, string city, string state, string zip, int id)
         {
-            Sighting newSighting = new Sighting(description);
+            Sighting newSighting = new Sighting(description, type, time, address, city, state, zip);
             newSighting.Save();
             newSighting.Alert();
-            return RedirectToAction("UserAccount", "Users", new { id = idUser});          
+            return RedirectToAction("Index", "Home");          
         }
     }
 }
