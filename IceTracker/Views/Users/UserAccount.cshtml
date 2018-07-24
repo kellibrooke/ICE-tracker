@@ -4,8 +4,42 @@
 @{
 }
 
-<h1>@Model.FirstName Account</h1>
+<h1>Account Details</h1>
+<h4>Name</h4>
+<p>@Model.FirstName @Model.LastName</p>
+<h4>Raid Sightings Submitted:</h4>
+<div class="row">
+    <div class="col-sm-2">
+        <h4>Date/Time</h4>
+    </div>
+    <div class="col-sm-2">
+        <h4>Type</h4>
+    </div>
+    <div class="col-sm-4">
+        <h4>Location</h4>
+    </div>
+    <div class="col-sm-4">
+        <h4>Description</h4>
+    </div>
+</div>
 
-<h2>Map of Current Raids</h2>
+    @foreach (var sighting in Model.GetAllUserSightings())
+    {
+        <div class="row">
+            <div class="col-sm-2">
+                @sighting.Time
+            </div>
+            <div class="col-sm-2">
+                @sighting.Type
+            </div>
+            <div class="col-sm-4">
+                @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
+            </div>
+            <div class="col-sm-4">
+                @sighting.Description
+            </div>
+        </div>
+
+    }
 
 <a href="/sightings/@Model.Id/save">Post New Raid</a>

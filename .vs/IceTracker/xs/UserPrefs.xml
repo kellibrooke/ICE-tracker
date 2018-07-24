@@ -1,15 +1,13 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Models/Sighting.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Controllers/SightingsController.cs">
     <Files>
-      <File FileName="IceTracker/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/Controllers/HomeController.cs" Line="16" Column="47" />
-      <File FileName="IceTracker/Controllers/SightingsController.cs" Line="32" Column="33" />
-      <File FileName="IceTracker/Controllers/UsersController.cs" Line="7" Column="1" />
-      <File FileName="IceTracker/Views/Users/CreateAccount.cshtml" Line="8" Column="30" />
-      <File FileName="IceTracker/Models/Sighting.cs" Line="162" Column="47" />
       <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="7" Column="29" />
-      <File FileName="IceTracker/Models/User.cs" Line="1" Column="1" />
+      <File FileName="IceTracker/Models/User.cs" Line="120" Column="10" />
+      <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="25" Column="38" />
+      <File FileName="IceTracker/Models/Sighting.cs" Line="155" Column="17" />
+      <File FileName="IceTracker/Controllers/UsersController.cs" Line="44" Column="69" />
+      <File FileName="IceTracker/Controllers/SightingsController.cs" Line="21" Column="160" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
