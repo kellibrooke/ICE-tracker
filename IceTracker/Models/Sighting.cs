@@ -80,7 +80,7 @@ namespace IceTracker.Models
                 var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+19718034174"),
-                    body: this.Description);
+                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ", " + this.Zip + ". Details: " + this.Description);
 
                 Console.WriteLine(message.Sid);
             }
