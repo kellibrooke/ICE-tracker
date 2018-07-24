@@ -11,11 +11,9 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-            DateTime time = new DateTime(2011, 6, 10);
-            Sighting newSighting = new Sighting("New description", "type", time, "Address", "city", "state", "zip");
-            List<Sighting> allSightings = Sighting.GetSightings();
-            newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
-            return View(allSightings);
+
+            string model = Sighting.GetSightings();
+            return View("Index", model);
         }
     }
 }
