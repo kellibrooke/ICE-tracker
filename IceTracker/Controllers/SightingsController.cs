@@ -9,6 +9,11 @@ namespace IceTracker.Controllers
 {
     public class SightingsController : Controller
     {
+        [HttpGet("/sightings")]
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet("/sightings/{id}/save")]
         public IActionResult CreateForm(int id)
