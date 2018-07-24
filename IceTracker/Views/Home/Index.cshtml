@@ -1,39 +1,33 @@
 ﻿@{
     Layout = "_Layout";
 }
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-       /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
-
-        @foreach (var sighting in Model)
-{
-    <li>@sighting.City</li>
-}
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeJHf8X4QrsqF0IRGrY5LeG3EP3OWWCac&callback=initMap">
+    <div id="dvMap" style="width: 100%; height: 500px">
+    </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8"></script>
+    <script type="text/javascript">
+        var markers = @Html.Raw(Model);
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.address);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
     </script>
-  </body>
-</html>

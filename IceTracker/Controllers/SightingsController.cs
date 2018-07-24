@@ -22,6 +22,7 @@ namespace IceTracker.Controllers
         {
             Sighting newSighting = new Sighting(description, type, time, address, city, state, zip);
             newSighting.Save();
+            newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             newSighting.Alert();
             return RedirectToAction("Index", "Home");          
         }

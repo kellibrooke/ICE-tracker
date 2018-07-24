@@ -137,7 +137,7 @@ namespace IceTracker.Models
 
         }
 
-        public static List<Sighting> GetSightings()
+        public static string GetSightings()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -147,21 +147,21 @@ namespace IceTracker.Models
             cmd.CommandText = @"SELECT * FROM sightings";
 
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            string markers = "[";
             while (rdr.Read())
             {
-                int id = rdr.GetInt32(0);
-                string description = rdr.GetString(1);
-                string type = rdr.GetString(2);
-                DateTime time = rdr.GetDateTime(3);
-                string address = rdr.GetString(4);
-                string city = rdr.GetString(5);
-                string state = rdr.GetString(6);
-                string zip = rdr.GetString(7);
-                double lat = rdr.GetDouble(8);
-                double lng = rdr.GetDouble(9);
-
-                Sighting newSighting = new Sighting(description, type, time, address, city, state, zip, lat, lng, id);
-                allSightings.Add(newSighting);
+                markers += "{";
+                markers += string.Format("'id': '{0}',", rdr["id"]);
+                markers += string.Format("'description': '{0}',", rdr["description"]);
+                markers += string.Format("'time': '{0}',", rdr["date_time"]);
+                markers += string.Format("'address': '{0}',", rdr["address"]);
+                markers += string.Format("'city': '{0}',", rdr["city"]);
+                markers += string.Format("'state': '{0}',", rdr["state"]);
+                markers += string.Format("'zip': '{0}',", rdr["zip"]);
+                markers += string.Format("'lat': '{0}',", rdr["lat"]);
+                markers += string.Format("'lng': '{0}'", rdr["lng"]);
+                markers += "},";
             }
 
             conn.Close();
@@ -169,8 +169,8 @@ namespace IceTracker.Models
             {
                 conn.Dispose();
             }
-
-            return allSightings;
+            markers += "]";
+            return markers;
         }
 
         public async void ConvertToLatLongAsync(string address)
