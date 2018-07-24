@@ -11,13 +11,13 @@ namespace IceTracker.Controllers
     public class UsersController : Controller
     {
 
-        [HttpGet("/users/register")]
+        [HttpGet("/users/sign-up")]
         public IActionResult CreateAccount()
         {
             return View();
         }
 
-        [HttpPost("/users/register")]
+        [HttpPost("/users/sign-up")]
         public IActionResult CreateAccountForm(string firstName, string lastName, string phoneNumber)
         {
             User newUser = new User(firstName, lastName, phoneNumber);

@@ -1,5 +1,27 @@
-﻿body {
-    font-size: 14px;
+﻿input[type="text"] {
+    font-size: 16px;
+    text-align: center;
+}
+
+ul {
+    top: 0;
+}
+
+.limit {
+    max-width: 500px;
+    margin: auto;
+}
+
+.form-control {
+    font-size: 16px;
+}
+
+select option {
+    font-size: 16pt;
+}
+
+body {
+    font-size: 16px;
     text-align: center;
 }
 
@@ -24,9 +46,20 @@
 }
 
 navbar {
-    padding-top: -100px;
+    top: 0;
 }
 
 .jumbotron {
     background-color: #BA4C44;
+    font-family: 'Syncopate', sans-serif;
+    position: relative;
+    color: white;
+}
+
+textarea {
+    width: 100px;
+}
+
+li {
+    padding: 10px;
 }
