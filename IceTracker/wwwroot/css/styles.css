@@ -12,43 +12,6 @@ a {
     color: #BA4C44;
 }
 
-.accordion {
-    font-size: 20px;
-    text-align: center;
-    background-color: #373A3B;
-    color: #9C9D9E;
-    cursor: pointer;
-    padding: 5px;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-.active, .accordion:hover {
-    background-color: #191A1B;
-}
-
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    display: none;
-    overflow: hidden;
-}
-
-.accordion:after {
-    content: '\02795';
-    font-size: 13px;
-    color: #9C9D9E;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    content: "\2796";
-}
-
 
 input[placeholder] {
     text-align: center;
@@ -152,6 +115,7 @@ h2 {
     font-family: 'Anton', sans-serif;
     font-size: 20px;
     padding: 10px;
+    border-radius: 4px
 }
 
 hr {
@@ -192,6 +156,9 @@ li {
     margin-left: 1.5%;
     display: inline-block;
     vertical-align: top;
+    min-height: 500px;
+    background: #eee;
+    overflow: scroll
 }
 
 .userSightings{
@@ -222,10 +189,10 @@ li {
 }
 
     #feed-header h3 {
-        color: white;
+        color: rgba(255,255,255,0.5);
         letter-spacing: .5px;
         margin-bottom: 0px;
-        font-size: 22px
+        font-size: 22px
     }
 
 
@@ -247,6 +214,7 @@ li {
     background-color: #ccc;
     border: 1px solid black;
     border-bottom: 0;
+    border-radius: 0px
 }
 
 .feed .accordion:hover {

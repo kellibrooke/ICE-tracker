@@ -60,7 +60,14 @@ namespace IceTracker.Controllers
             IceTracker.Models.User.Update(firstName, lastName, phone, userId);
             return RedirectToAction("UserAccount", new { id = userId });
         }
-        
+
+        [HttpGet("/users/login")]
+        public IActionResult Login()
+        {
+            return View();
+
+        }
+
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
