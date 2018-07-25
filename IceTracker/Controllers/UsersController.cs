@@ -60,10 +60,11 @@ namespace IceTracker.Controllers
             return View(model);
         }
 
-            [HttpPost("/users/{id}/updateAccount")]
-        public IActionResult Update()
+        [HttpPost("/users/{userId}/updateAccount")]
+        public IActionResult Update(string firstName, string lastName, string phone, int userId)
         {
-            return View();
+            IceTracker.Models.User.Update(firstName, lastName, phone, userId);
+            return RedirectToAction("UserAccount", new { id = userId });
         }
 
         [HttpPost("/users/login")]

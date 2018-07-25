@@ -7,16 +7,16 @@
 
 <h1>Update Account</h1>
 
-<form action="users/@Model["user"].Id/update" method="post">
+<form action="/users/@Model["user"].Id/updateAccount" method="post">
     
     <label for="firstName">First Name</label>
-    <input name="firstName" type="text" placeholder=@Model["user"].FirstName />
+    <input name="firstName" type="text" value=@Model["user"].FirstName placeholder=@Model["user"].FirstName />
 
     <label for="lastName">Last Name</label>
-    <input name="lastName" type="text" placeholder=@Model["user"].LastName />
+    <input name="lastName" type="text" value=@Model["user"].LastName placeholder=@Model["user"].LastName />
 
     <label for="phone">Phone Number</label>
-    <input name="phone" type="number" placeholder=@Model["user"].PhoneNumber />
+    <input name="phone" type="number" value=@Model["user"].PhoneNumber placeholder=@Model["user"].PhoneNumber />
 
     <button type="submit">Update Account</button>
 
