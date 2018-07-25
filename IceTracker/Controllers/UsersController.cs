@@ -28,16 +28,21 @@ namespace IceTracker.Controllers
         [HttpGet("/users/login")]
         public IActionResult Login()
         {
-            return View();
+            return View();  
+    
         }
+
 
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
             User newUser = IceTracker.Models.User.FindAUser(phoneNumber);
+            if(newUser.Id == 0)
+            {
+                return View("CreateAccount");
+            }
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
-
         [HttpGet("/users/{id}")]
         public IActionResult UserAccount(int id)
         {
