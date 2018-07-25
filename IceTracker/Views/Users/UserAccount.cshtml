@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_LayoutLoggedIn";
 }
 
 <h1>Account Details</h1>
@@ -23,23 +24,23 @@
     </div>
 </div>
 
-    @foreach (var sighting in Model.GetAllUserSightings())
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                @sighting.Time
-            </div>
-            <div class="col-sm-2">
-                @sighting.Type
-            </div>
-            <div class="col-sm-4">
-                @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
-            </div>
-            <div class="col-sm-4">
-                @sighting.Description
-            </div>
+@foreach (var sighting in Model.GetAllUserSightings())
+{
+    <div class="row">
+        <div class="col-sm-2">
+            @sighting.Time
         </div>
+        <div class="col-sm-2">
+            @sighting.Type
+        </div>
+        <div class="col-sm-4">
+            @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
+        </div>
+        <div class="col-sm-4">
+            @sighting.Description
+        </div>
+    </div>
 
-    }
+}
 
 <a href="/sightings/@Model.Id/save">Post New Raid</a>

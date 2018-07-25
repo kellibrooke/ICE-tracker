@@ -32,7 +32,8 @@ namespace IceTracker.Controllers
             newSighting.Save(idUser);
             newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             newSighting.Alert();
-            return RedirectToAction("Index", "Home");          
+            return RedirectToAction("UserAccount", "Users", new { id = idUser });  
+            //return RedirectToAction("Copies", new { id = bookId }); 
         }
     }
 }
