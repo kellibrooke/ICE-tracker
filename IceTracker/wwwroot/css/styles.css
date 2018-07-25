@@ -105,3 +105,38 @@ textarea {
 li {
     padding: 5px;
 }
+
+#dvMap2 {
+    width: 70%;
+    height: 500px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.feed {
+    width: 25%;
+    margin-left: 4.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.userSightings{
+    margin: 2rem 0
+    
+}
+
+.userSightings .col-sm-2,
+.userSightings .col-sm-4 {
+    border: 1px solid black;
+    padding: 10px 0;
+}
+
+#userSightingsHeader{
+    background: #BA4C44;
+    color: white
+        
+}
+
+.bolder {
+    font-weight:700;
+}
