@@ -2,27 +2,30 @@
     ViewData["Title"] = "Sign Up";
 }
 
-<div class="center">
-    <h1>Create Your Account</h1>
+<div class="center limit">
+    <h1>SIGN UP</h1>
+    <hr />
+    <h2>To receive alerts for future ICE raids or report a raid, please create an account.</h2>
     <form action="/users/sign-up" method="post">
         <div class="form-group">
-            <label for="firstName">First Name: </label><br />
+            <label for="firstName">First Name</label><br />
             <input type="text" name="firstName" placeholder="John">
         </div>
         <div class="form-group">
-            <label for="lastName">Last Name: </label><br />
+            <label for="lastName">Last Name</label><br />
             <input type="text" name="lastName" placeholder="Doe">
         </div>
         <div class="form-group">
-            <label for="phoneNumber">Phone Number: </label><br />
+            <label for="phoneNumber">Phone Number</label><br />
             <input type="number" name="phoneNumber" placeholder="(503)-123-4567">
         </div>
-        <button class="btn btn-danger" type="submit">Create Account</button>
+        <button class="btn btn-danger" type="submit">JOIN</button>
     </form>
 </div>
-<div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,bs,en,es,fa,fr,ht,ig,ko,lo,my,ps,so,vi,zh-CN', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
