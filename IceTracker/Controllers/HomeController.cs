@@ -27,5 +27,11 @@ namespace IceTracker.Controllers
             User thisUser = IceTracker.Models.User.FindAUserById(id);
             return View(thisUser);
         }
+
+        [HttpGet("/contact")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }

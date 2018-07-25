@@ -3,6 +3,11 @@
     text-align: center;
 }
 
+input[type="number"] {
+    font-size: 18px;
+    text-align: center;
+}
+
 body {
     font-size: 18px;
     text-align: center;
@@ -95,6 +100,7 @@ hr {
 }
 
 h3 {
+    font-size: 18px;
     color: #383A3C;
 }
 
