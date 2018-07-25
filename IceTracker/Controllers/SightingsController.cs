@@ -26,7 +26,7 @@ namespace IceTracker.Controllers
         public IActionResult CreateSighting(string description, string type, DateTime time, string address, string city, string state, int id, int idUser)
         {
 
-            Sighting newSighting = new Sighting(description, type, time, address, city, state, idUser);
+            Sighting newSighting = new Sighting(description, type, DateTime.Now, address, city, state, idUser);
             newSighting.Save(idUser);
             newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             newSighting.Alert();
