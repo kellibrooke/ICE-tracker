@@ -2,6 +2,13 @@
     font-size: 18px;
     text-align: center;
 }
+
+body {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 0px;
+}
+
 .goog-logo-link {
     display: none !important;
 }
@@ -29,11 +36,6 @@ ul {
 
 select option {
     font-size: 18pt;
-}
-
-body {
-    font-size: 18px;
-    text-align: center;
 }
 
 label {
@@ -77,6 +79,11 @@ h2 {
     font-family: 'Anton', sans-serif;
     font-size: 20px;
     padding: 10px;
+}
+
+hr {
+    background-color: #BA4C44;
+    width: 750px;
 }
 
 .jumbotron {
