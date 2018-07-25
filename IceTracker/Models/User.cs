@@ -97,10 +97,9 @@ namespace IceTracker.Models
                 string address = rdr.GetString(4);
                 string city = rdr.GetString(5);
                 string state = rdr.GetString(6);
-                string zip = rdr.GetString(7);
-                double lat = rdr.GetDouble(8);
-                double lng = rdr.GetDouble(9);
-                int userId = rdr.GetInt32(10);
+                double lat = rdr.GetDouble(7);
+                double lng = rdr.GetDouble(8);
+                int userId = rdr.GetInt32(9);
 
                 Sighting newSighting = new Sighting(description, type, time, address, city, state, lat, lng, userId, id);
                 allSightings.Add(newSighting);
