@@ -11,8 +11,12 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-            string model = Sighting.GetSightings();
-            return View("Index", model);
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            string allSightings = Sighting.GetSightings();
+            List<Sighting> sightingsList = Sighting.GetSightingsList();
+            model.Add("sightings", allSightings);
+            model.Add("sightingsList", sightingsList);
+            return View(model);
         }
 
         [HttpGet("/about")]
@@ -27,5 +31,6 @@ namespace IceTracker.Controllers
             User thisUser = IceTracker.Models.User.FindAUserById(id);
             return View(thisUser);
         }
+
     }
 }

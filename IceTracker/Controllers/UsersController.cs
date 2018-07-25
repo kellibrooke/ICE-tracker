@@ -33,12 +33,6 @@ namespace IceTracker.Controllers
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
 
-        [HttpGet("/users/login")]
-        public IActionResult Login()
-        {
-            return View();  
-        }
-
         [HttpGet("/users/{id}/delete")]
         public IActionResult DeleteUser(int id)
         {
@@ -66,7 +60,7 @@ namespace IceTracker.Controllers
             IceTracker.Models.User.Update(firstName, lastName, phone, userId);
             return RedirectToAction("UserAccount", new { id = userId });
         }
-
+        
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
@@ -77,6 +71,7 @@ namespace IceTracker.Controllers
             }
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
+
         [HttpGet("/users/{id}")]
         public IActionResult UserAccount(int id)
         {
