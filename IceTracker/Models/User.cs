@@ -86,9 +86,6 @@ namespace IceTracker.Models
 
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
 
-            int sightingId = 0;
-            string firstName = "";
-            string lastName = "";
             List<Sighting> allSightings = new List<Sighting>() { };
 
             while (rdr.Read())
@@ -105,7 +102,7 @@ namespace IceTracker.Models
                 double lng = rdr.GetDouble(9);
                 int userId = rdr.GetInt32(10);
 
-                Sighting newSighting = new Sighting(description, type, time, address, city, state, zip, lat, lng, userId, id);
+                Sighting newSighting = new Sighting(description, type, time, address, city, state, lat, lng, userId, id);
                 allSightings.Add(newSighting);
 
             }
