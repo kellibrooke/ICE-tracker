@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title translate="no">@ViewData["Title"] | ICE Breaker</title>
+    <title class="notranslate">@ViewData["Title"] | ICE Breaker</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
@@ -38,12 +38,13 @@
     </nav>
     <div class="container body-content">
         <div class="jumbotron">
-            <h1>ICE Breaker</h1>
+            <h1 class="notranslate">ICE Breaker</h1>
+                
         </div>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2018 - ICE Breaker <br /> Epicodus</p>
+            <p class="notranslate" >&copy; 2018 - ICE Breaker <br /> Epicodus</p>
         </footer>
     </div>
 
