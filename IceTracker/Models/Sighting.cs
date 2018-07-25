@@ -22,12 +22,11 @@ namespace IceTracker.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string Zip { get; set; }
         public Double Lat { get; set; }
         public Double Lng { get; set; }
         public int UserId { get; set; }
 
-        public Sighting(string description, string type, DateTime time, string address, string city, string state, string zip, double lat = 0, double lng = 0, int userId = 0, int id = 0)
+        public Sighting(string description, string type, DateTime time, string address, string city, string state, double lat = 0, double lng = 0, int userId = 0, int id = 0)
         {
             Id = id;
             Description = description;
@@ -36,7 +35,6 @@ namespace IceTracker.Models
             Address = address;
             City = city;
             State = state;
-            Zip = zip;
             Lat = lat;
             Lng = lng;
             UserId = userId;
@@ -48,7 +46,7 @@ namespace IceTracker.Models
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO sightings (description, type, date_time, address, city, state, zip, user_id) VALUES (@Description, @Type, @Time, @Address, @City, @State, @Zip, @UserId);";
+            cmd.CommandText = @"INSERT INTO sightings (description, type, date_time, address, city, state, user_id) VALUES (@Description, @Type, @Time, @Address, @City, @State, @UserId);";
 
             cmd.Parameters.AddWithValue("@Description", Description);
             cmd.Parameters.AddWithValue("@Type", Type);
@@ -56,7 +54,6 @@ namespace IceTracker.Models
             cmd.Parameters.AddWithValue("@Address", Address);
             cmd.Parameters.AddWithValue("@City", City);
             cmd.Parameters.AddWithValue("@State", State);
-            cmd.Parameters.AddWithValue("@Zip", Zip);
             cmd.Parameters.AddWithValue("@UserId", userId);
 
             cmd.ExecuteNonQuery();
@@ -83,7 +80,7 @@ namespace IceTracker.Models
                 var message = MessageResource.Create(
                     to,
                     from: new PhoneNumber("+19718034174"),
-                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ", " + this.Zip + ". Details: " + this.Description);
+                    body: "ICE Raid spotted at " + this.Address + ", " + this.City + ", " + this.State + ". Details: " + this.Description);
 
                 Console.WriteLine(message.Sid);
             }
@@ -105,12 +102,11 @@ namespace IceTracker.Models
                 bool addressEquality = (this.Address == newSighting.Address);
                 bool cityEquality = (this.City == newSighting.City);
                 bool stateEquality = (this.State == newSighting.State);
-                bool zipEquality = (this.Zip == newSighting.Zip);
                 bool latEquality = (this.Lat == newSighting.Lat);
                 bool lngEquality = (this.Lng == newSighting.Lng);
                 bool UserIdEquality = (this.UserId == newSighting.UserId);
 
-                return (idEquality && descriptionEquality && typeEquality && timeEquality && addressEquality && cityEquality && stateEquality && zipEquality && latEquality && lngEquality && UserIdEquality);
+                return (idEquality && descriptionEquality && typeEquality && timeEquality && addressEquality && cityEquality && stateEquality && latEquality && lngEquality && UserIdEquality);
             }
         }
 
@@ -128,7 +124,7 @@ namespace IceTracker.Models
 
 
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT id, address, city, state, zip FROM sightings ORDER BY id DESC LIMIT 1";
+            cmd.CommandText = @"SELECT id, address, city, state, FROM sightings ORDER BY id DESC LIMIT 1";
 
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())
@@ -137,11 +133,9 @@ namespace IceTracker.Models
                 string address = rdr.GetString(1);
                 string city = rdr.GetString(2);
                 string state = rdr.GetString(3);
-                string zip = rdr.GetString(4);
                 fullAddress.Add(address);
                 fullAddress.Add(city);
                 fullAddress.Add(state);
-                fullAddress.Add(zip);
             }
 
             conn.Close();
@@ -177,7 +171,6 @@ namespace IceTracker.Models
                 markers += string.Format("'address': '{0}',", rdr["address"]);
                 markers += string.Format("'city': '{0}',", rdr["city"]);
                 markers += string.Format("'state': '{0}',", rdr["state"]);
-                markers += string.Format("'zip': '{0}',", rdr["zip"]);
                 markers += string.Format("'lat': '{0}',", rdr["lat"]);
                 markers += string.Format("'lng': '{0}',", rdr["lng"]);
                 markers += string.Format("'type': '{0}'", rdr["type"]);
