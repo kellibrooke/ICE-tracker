@@ -98,9 +98,25 @@ namespace IceTracker.Models
             else
             {
                 Sighting newSighting = (Sighting)otherSighting;
+                bool idEquality = (this.Id == newSighting.Id);
                 bool descriptionEquality = (this.Description == newSighting.Description);
-                return (descriptionEquality);
+                bool typeEquality = (this.Type == newSighting.Type);
+                bool timeEquality = (this.Time == newSighting.Time);
+                bool addressEquality = (this.Address == newSighting.Address);
+                bool cityEquality = (this.City == newSighting.City);
+                bool stateEquality = (this.State == newSighting.State);
+                bool zipEquality = (this.Zip == newSighting.Zip);
+                bool latEquality = (this.Lat == newSighting.Lat);
+                bool lngEquality = (this.Lng == newSighting.Lng);
+                bool UserIdEquality = (this.UserId == newSighting.UserId);
+
+                return (idEquality && descriptionEquality && typeEquality && timeEquality && addressEquality && cityEquality && stateEquality && zipEquality && latEquality && lngEquality && UserIdEquality);
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
         }
 
         public static string GetLastAddress()

@@ -30,3 +30,7 @@ navbar {
 .jumbotron {
     background-color: #BA4C44;
 }
+
+#sightingsForm .form-control {
+    margin: 0 auto
+}
