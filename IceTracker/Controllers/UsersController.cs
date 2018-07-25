@@ -39,6 +39,13 @@ namespace IceTracker.Controllers
             return View();  
         }
 
+        [HttpGet("/users/{id}/delete")]
+        public IActionResult DeleteUser(int id)
+        {
+            IceTracker.Models.User.Delete(id);
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpGet("/users/{id}/updateAccount/")]
         public IActionResult UpdateForm(int id)
         {

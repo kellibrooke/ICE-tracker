@@ -1,10 +1,12 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Users/UserAccount.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Controllers/UsersController.cs">
     <Files>
-      <File FileName="IceTracker/Controllers/UsersController.cs" Line="45" Column="27" />
-      <File FileName="IceTracker/Views/Users/UpdateForm.cshtml" Line="18" Column="1" />
-      <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="12" Column="23" />
+      <File FileName="IceTracker/Controllers/UsersController.cs" Line="48" Column="1" />
+      <File FileName="IceTracker/Views/Users/UpdateForm.cshtml" Line="29" Column="1" />
+      <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="24" Column="11" />
+      <File FileName="IceTracker/Models/User.cs" Line="203" Column="14" />
+      <File FileName="IceTracker/Controllers/HomeController.cs" Line="31" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
