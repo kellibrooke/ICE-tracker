@@ -187,6 +187,39 @@ namespace IceTracker.Models
             return markers;
         }
 
+        public static List<Sighting> GetSightingsList()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            List<Sighting> allSightings = new List<Sighting>();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM sightings ORDER BY date_time ASC LIMIT 10";
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int id = rdr.GetInt32(0);
+                string description = rdr.GetString(1);
+                string type = rdr.GetString(2);
+                DateTime time = rdr.GetDateTime(3);
+                string address = rdr.GetString(4);
+                string city = rdr.GetString(5);
+                string state = rdr.GetString(6);
+
+                Sighting newSighting = new Sighting(description, type, time, address, city, state, id);
+                allSightings.Add(newSighting);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return allSightings;
+        }
+
         public async void ConvertToLatLongAsync(string address)
         {
             IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8" };

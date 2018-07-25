@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "New Sighting";
+    Layout = "_LayoutLoggedIn";
 }
 <div class="container center">
     <form action="/sightings/@Model.Id/save" method="post">
@@ -33,3 +34,11 @@
         <button class="btn btn-danger" type="submit">Submit</button>
     </form>
 </div>
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

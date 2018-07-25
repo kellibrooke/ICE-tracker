@@ -1,7 +1,26 @@
 ﻿input[type="text"] {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
 }
+
+body {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 0px;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+#nav-logo {
+    padding-bottom: 20px;
+}
+
 
 ul {
     top: 0;
@@ -16,14 +35,12 @@ ul {
 }
 
 select option {
-    font-size: 16pt;
+    font-size: 18pt;
 }
 
-body {
-    font-size: 16px;
-    text-align: center;
+label {
+    color: #5F6062;
 }
-
 .center {
     margin: auto;
     width: 100%;
@@ -36,23 +53,49 @@ body {
 }
 
 .btn {
-    font-size: 16px;
+    font-size: 18px;
     margin: 10px;
+    background-color: #BA4C44;
+    border-color: #BA4C44;
+    font-family: 'Anton', sans-serif;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    color: #BA4C44;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 22px;
 }
 
 .fist {
     width: 15%;
 }
 
-navbar {
-    top: 0;
+#report-raid {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+hr {
+    background-color: #BA4C44;
+    width: 750px;
 }
 
 .jumbotron {
     background-color: #BA4C44;
-    font-family: 'Syncopate', sans-serif;
+    font-family: 'Anton', sans-serif;
     position: relative;
     color: white;
+    letter-spacing: 5px;
+}
+
+h3 {
+    color: #383A3C;
 }
 
 textarea {
@@ -60,5 +103,40 @@ textarea {
 }
 
 li {
-    padding: 10px;
+    padding: 5px;
+}
+
+#dvMap2 {
+    width: 70%;
+    height: 500px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.feed {
+    width: 25%;
+    margin-left: 4.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.userSightings{
+    margin: 2rem 0
+    
+}
+
+.userSightings .col-sm-2,
+.userSightings .col-sm-4 {
+    border: 1px solid black;
+    padding: 10px 0;
+}
+
+#userSightingsHeader{
+    background: #BA4C44;
+    color: white
+        
+}
+
+.bolder {
+    font-weight:700;
 }

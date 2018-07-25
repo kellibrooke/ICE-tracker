@@ -86,9 +86,6 @@ namespace IceTracker.Models
 
             var rdr = cmd.ExecuteReader() as MySqlDataReader;
 
-            int sightingId = 0;
-            string firstName = "";
-            string lastName = "";
             List<Sighting> allSightings = new List<Sighting>() { };
 
             while (rdr.Read())
