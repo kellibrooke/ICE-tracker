@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Sightings/CreateForm.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/wwwroot/css/styles.css">
     <Files>
       <File FileName="IceTracker/Controllers/HomeController.cs" Line="25" Column="1" />
-      <File FileName="IceTracker/Views/Home/About.cshtml" Line="1" Column="1" />
+      <File FileName="IceTracker/Views/Home/About.cshtml" Line="4" Column="20" />
       <File FileName="IceTracker/Views/Sightings/Index.cshtml" Line="8" Column="15" />
       <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="25" Column="1" />
       <File FileName="IceTracker/Controllers/UsersController.cs" Line="24" Column="32" />
-      <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="40" Column="41" />
+      <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="20" Column="45" />
       <File FileName="IceTracker/wwwroot/css/site.css" Line="1" Column="1" />
-      <File FileName="IceTracker/wwwroot/css/styles.css" Line="7" Column="21" />
-      <File FileName="IceTracker/Views/Home/Index.cshtml" Line="21" Column="25" />
+      <File FileName="IceTracker/wwwroot/css/styles.css" Line="25" Column="24" />
+      <File FileName="IceTracker/Views/Home/Index.cshtml" Line="15" Column="31" />
       <File FileName="IceTracker/wwwroot/css/bootstrap.min.css" Line="13" Column="154767" />
       <File FileName="IceTracker/Views/Users/CreateAccount.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/Views/Users/Login.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="41" Column="7" />
+      <File FileName="IceTracker/Views/Users/Login.cshtml" Line="5" Column="18" />
+      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
