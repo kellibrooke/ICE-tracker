@@ -15,14 +15,14 @@ namespace IceTracker.Controllers
             return View();
         }
 
-        [HttpGet("/sightings/{id}/save")]
+        [HttpGet("/{id}/newsighting")]
         public IActionResult CreateForm(int id)
         {
-            User newUser = IceTracker.Models.User.FindAUserById(id); 
+            User newUser = IceTracker.Models.User.FindAUserById(id);
             return View(newUser);
         }
 
-        [HttpPost("/sightings/{idUser}/save")]
+        [HttpPost("/{idUser}/newsighting")]
         public IActionResult CreateSighting(string description, string type, DateTime time, string address, string city, string state, string zip, int id, int idUser)
         {
 
@@ -30,8 +30,10 @@ namespace IceTracker.Controllers
             newSighting.Save(idUser);
             newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             newSighting.Alert();
-            return RedirectToAction("Index", "Home");          
+            User selectedUser = IceTracker.Models.User.FindAUserById(idUser);
+            return RedirectToAction("UserAccount", "Users", selectedUser);
         }
+
     }
 }
  

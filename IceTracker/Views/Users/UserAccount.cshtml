@@ -3,6 +3,7 @@
 *@
 @{
 }
+@using IceTracker.Models;
 
 <h1>Account Details</h1>
 <h4>Name</h4>
@@ -23,23 +24,25 @@
     </div>
 </div>
 
-    @foreach (var sighting in Model.GetAllUserSightings())
-    {
-        <div class="row">
-            <div class="col-sm-2">
-                @sighting.Time
-            </div>
-            <div class="col-sm-2">
-                @sighting.Type
-            </div>
-            <div class="col-sm-4">
-                @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
-            </div>
-            <div class="col-sm-4">
-                @sighting.Description
-            </div>
+@foreach (var sighting in Model.GetAllUserSightings())
+{
+    <div class="row">
+        <div class="col-sm-2">
+            @sighting.Time
         </div>
+        <div class="col-sm-2">
+            @sighting.Type
+        </div>
+        <div class="col-sm-4">
+            @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
+        </div>
+        <div class="col-sm-4">
+            @sighting.Description
+        </div>
+    </div>
 
-    }
+}
 
-<a href="/sightings/@Model.Id/save">Post New Raid</a>
+<a href="/@Model.Id/newsighting">Post New Raid</a>
+<a href="/@Model.Id/allsightings">View All Sightings</a>
+

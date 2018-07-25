@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="dvMap2" style="width: 100%; height: 500px">
+</div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8"></script>
+<script type="text/javascript">var markers = @Html.Raw(Model);
+window.onload = function() {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var map = new google.maps.Map(document.getElementById("dvMap2"), mapOptions);
+        for (i = 0; i < markers.length; i++) {
+            var data = markers[i]
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.title
+            });
+            (function(marker, data) {
+                google.maps.event.addListener(marker, "click", function(e) {
+                    infoWindow.setContent(data.address);
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+}</script>

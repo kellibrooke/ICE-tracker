@@ -44,5 +44,12 @@ namespace IceTracker.Controllers
             User newUser = IceTracker.Models.User.FindAUserById(id);
             return View(newUser);
         }
+
+        [HttpGet("/{id}/allsightings")]
+        public IActionResult AllSightings()
+        {
+            string model = Sighting.GetSightings();
+            return View(model);
+        }
     }
 } 
