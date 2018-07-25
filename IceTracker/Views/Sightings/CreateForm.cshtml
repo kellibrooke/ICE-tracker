@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "New Sighting";
+    Layout = "_LayoutLoggedIn";
 }
 <div class="container center">
     <form action="/sightings/@Model.Id/save" method="post">

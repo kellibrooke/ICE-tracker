@@ -1,5 +1,6 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
+
   <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Controllers/UsersController.cs">
     <Files>
       <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="1" Column="1" />
@@ -7,6 +8,16 @@
       <File FileName="IceTracker/Controllers/HomeController.cs" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Controllers/UsersController.cs" Line="1" Column="1" NotebookId="1" />
+
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Shared/_Layout.cshtml">
+    <Files>
+      <File FileName="IceTracker/Views/Shared/_LayoutLoggedIn.cshtml" Line="31" Column="22" />
+      <File FileName="IceTracker/Views/Users/UserAccount.cshtml" Line="5" Column="5" />
+      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="29" Column="15" />
+      <File FileName="IceTracker/Controllers/HomeController.cs" Line="31" Column="2" />
+      <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="27" Column="64" />
+      <File FileName="IceTracker/Controllers/UsersController.cs" Line="45" Column="32" NotebookId="1" />
+
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
