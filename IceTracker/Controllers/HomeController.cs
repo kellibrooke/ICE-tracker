@@ -11,9 +11,21 @@ namespace IceTracker.Controllers
     {
         public IActionResult Index()
         {
-
             string model = Sighting.GetSightings();
             return View("Index", model);
+        }
+
+        [HttpGet("/about")]
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet("/about/{id}")]
+        public IActionResult About_LoggedIn(int id)
+        {
+            User thisUser = IceTracker.Models.User.FindAUserById(id);
+            return View(thisUser);
         }
     }
 }

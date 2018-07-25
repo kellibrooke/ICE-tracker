@@ -1,33 +1,44 @@
 ﻿@{
     ViewData["Title"] = "New Sighting";
+    Layout = "_LayoutLoggedIn";
 }
-<form action="/sightings/@Model.Id/save" method="post">
-    <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" name="description">
-    </div>
-    <div class="form-group">
-        <label for="type">Raid Type</label>
-        <select name="type" class="form-control" id="type">
-            <option value="Checkpoint">Checkpoint</option>
-            <option value="Business">Business</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="address">Street Address</label>
-        <input type="text" name="address">
-    </div>
-    <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" name="city">
-    </div>
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" name="state">
-    </div>
-    <div class="form-group">
-        <label for="zip">Zip Code</label>
-        <input type="text" name="zip">
-    </div>
-    <button class="btn btn-danger" class="submit">Submit</button>
-</form>
+<div class="container center">
+    <form action="/sightings/@Model.Id/save" method="post">
+        <div class="form-group">
+            <label for="description">Description:</label><br />
+            <textarea type="text" name="description" rows="3" class="form-control center"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="type">Raid Type</label>
+            <select name="type" class="form-control center" id="type">
+                <option value="Checkpoint">Checkpoint</option>
+                <option value="Business">Business</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Street Address</label>
+            <input type="text" name="address" class="form-control center" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" class="form-control center" required>
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <select name="state">
+                <option value="OR">Oregon</option>
+                <option value="WA">Washington</option>
+                <option value="CA">California</option>
+            </select>
+        </div>
+        <button class="btn btn-danger" type="submit">Submit</button>
+    </form>
+</div>
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

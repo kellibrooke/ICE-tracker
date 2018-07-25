@@ -2,6 +2,18 @@
     Layout = "_Layout";
     ViewData["Title"] = "Home";
 }
+
+    <div class="jumbotron">
+        <h1>ICE BREAKER</h1>
+        <h3>TRACKING, REPORTING, AND ALERTING THE PORTLAND COMMUNITY</h3>
+    </div>
+
+    <h2>Have you witnessed ICE in your neighborhood? Help spread the word!</h2>
+    <a href="~/users/login" class="btn btn-danger" id="report-raid">REPORT AN ICE RAID</a>
+    <hr />
+    <h2>Click to explore our interactive, user-populated raid map below!</h2><br />
+
+
     <div id="dvMap" style="width: 100%; height: 500px">
     </div>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8"></script>
@@ -24,12 +36,19 @@
                     title: data.title
                 });
                 (function (marker, data) {
+                    var content = "<strong>Date:</strong> " + data.time + " <br/>" + "<strong>Description:</strong> " + data.description + "<br><strong>Type:</strong> " + data.type + " <br/><strong>Address:</strong> " + data.address + ".";
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.address);
+                        infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);
             }
         }
     </script>
+<div id="google_translate_element"></div>
 
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
