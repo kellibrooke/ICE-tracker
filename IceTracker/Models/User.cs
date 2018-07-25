@@ -187,5 +187,20 @@ namespace IceTracker.Models
 
             return foundUser;
         }
+        public static void Delete(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM users WHERE id = @UserId;";
+
+            cmd.Parameters.AddWithValue("@UserId", id);
+
+            cmd.ExecuteNonQuery();
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
     }
 }
