@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -25,10 +23,10 @@ namespace IceTracker.Controllers
         }
 
         [HttpPost("/sightings/{idUser}/save")]
-        public IActionResult CreateSighting(string description, string type, DateTime time, string address, string city, string state, string zip, int id, int idUser)
+        public IActionResult CreateSighting(string description, string type, DateTime time, string address, string city, string state, int id, int idUser)
         {
 
-            Sighting newSighting = new Sighting(description, type, time, address, city, state, zip, idUser);
+            Sighting newSighting = new Sighting(description, type, time, address, city, state, idUser);
             newSighting.Save(idUser);
             newSighting.ConvertToLatLongAsync(Sighting.GetLastAddress());
             newSighting.Alert();
