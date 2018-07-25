@@ -32,5 +32,17 @@ namespace IceTracker.Controllers
             return View(thisUser);
         }
 
+        [HttpGet("/contact")]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpGet("/contact/{id}")]
+        public IActionResult Contact_LoggedIn(int id)
+        {
+            User thisUser = IceTracker.Models.User.FindAUserById(id);
+            return View(thisUser);
+        }
     }
 }

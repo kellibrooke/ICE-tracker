@@ -3,10 +3,83 @@
     text-align: center;
 }
 
+textarea[placeholder] {
+    font-size: 18px;
+    text-align: center;
+}
+
+a {
+    color: #BA4C44;
+}
+
+.accordion {
+    font-size: 20px;
+    text-align: center;
+    background-color: #373A3B;
+    color: #9C9D9E;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #191A1B;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #9C9D9E;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+}
+
+
+input[placeholder] {
+    text-align: center;
+}
+
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.first-col {
+    padding-left: 90px;
+}
+
+.join-button {
+    margin: 40px;
+}
+
+.anonymous {
+    padding-bottom: 35px;
+}
+
 body {
     font-size: 18px;
     text-align: center;
     padding-top: 0px;
+}
+
+.profile {
+    width: 50%;
+    padding-top: 40px;
 }
 
 .goog-logo-link {
@@ -43,7 +116,7 @@ label {
 }
 .center {
     margin: auto;
-    width: 100%;
+    width: 75%;
     padding: 10px;
     text-align: center;
 }

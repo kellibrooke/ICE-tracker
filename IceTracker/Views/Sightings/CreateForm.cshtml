@@ -3,34 +3,44 @@
     Layout = "_LayoutLoggedIn";
 }
 <div class="container center">
+    <h1>REPORT NEW RAID</h1>
+    <hr />
+    <p>If you are currently witnessing an ICE raid, please provide the following details to report your sighting:</p>
+
     <form action="/sightings/@Model.Id/save" method="post">
-        <div class="form-group">
-            <label for="description">Description:</label><br />
-            <textarea type="text" name="description" rows="3" class="form-control center"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="type">Raid Type</label>
-            <select name="type" class="form-control center" id="type">
-                <option value="Checkpoint">Checkpoint</option>
-                <option value="Business">Business</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="address">Street Address</label>
-            <input type="text" name="address" class="form-control center" required>
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <input type="text" name="city" class="form-control center" required>
-        </div>
-        <div class="form-group">
-            <label for="state">State</label>
-            <select name="state">
-                <option value="OR">Oregon</option>
-                <option value="WA">Washington</option>
-                <option value="CA">California</option>
-            </select>
-        </div>
+        <div class="row">
+            <div class="col-md-6 padding-0">
+                <div class="form-group">
+                    <label for="description">Description</label><br />
+                    <textarea type="text" name="description" rows="3" class="form-control center" placeholder="Group of 5 ICE agents arresting individuals at Pioneer Courthouse Square. Do not take this MAX station."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="type">Raid Type</label>
+                    <select name="type" class="form-control center" id="type">
+                        <option value="Checkpoint">Checkpoint</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 padding-0">
+                <div class="form-group">
+                    <label for="address">Street Address</label>
+                    <input type="text" name="address" class="form-control center" placeholder="701 SW 6th Ave" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" name="city" class="form-control center" placeholder="Portland" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label><br />
+                    <select name="state" class="form-control center">
+                        <option value="OR">Oregon</option>
+                        <option value="WA">Washington</option>
+                        <option value="CA">California</option>
+                    </select>
+                </div>
+            </div>
+         </div>
         <button class="btn btn-danger" type="submit">Submit</button>
     </form>
 </div>
