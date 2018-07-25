@@ -22,7 +22,7 @@ namespace IceTracker.Controllers
         {
             User newUser = new User(firstName, lastName, phoneNumber);
             newUser.SaveUser();
-            return View("Login");
+            return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
 
         [HttpGet("/users/login")]
