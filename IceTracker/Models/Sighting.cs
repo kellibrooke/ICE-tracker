@@ -124,7 +124,7 @@ namespace IceTracker.Models
 
 
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT id, address, city, state, FROM sightings ORDER BY id DESC LIMIT 1";
+            cmd.CommandText = @"SELECT id, address, city, state FROM sightings ORDER BY id DESC LIMIT 1";
 
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
             while (rdr.Read())

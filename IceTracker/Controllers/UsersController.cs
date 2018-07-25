@@ -18,8 +18,16 @@ namespace IceTracker.Controllers
         }
 
         [HttpPost("/users/sign-up")]
-        public IActionResult CreateAccountForm(string firstName, string lastName, string phoneNumber)
+        public IActionResult CreateAccountForm(bool anony, string firstName, string lastName, string phoneNumber)
         {
+            if(anony == true)
+            {
+                firstName = "Anonymous";
+                lastName = "Anonymous";
+                User anonyUser = new User(firstName, lastName, phoneNumber);
+                anonyUser.SaveUser();
+
+            }
             User newUser = new User(firstName, lastName, phoneNumber);
             newUser.SaveUser();
             return View("Login");
