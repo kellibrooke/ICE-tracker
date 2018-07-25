@@ -24,12 +24,18 @@
                     title: data.title
                 });
                 (function (marker, data) {
+                    var content = "<strong>Date:</strong> " + data.time + " <br/>" + "<strong>Description:</strong> " + data.description + "<br><strong>Type:</strong> " + data.type + " <br/><strong>Address:</strong> " + data.address + ".";
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.address);
+                        infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);
             }
         }
     </script>
-
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,bs,en,es,fa,fr,ht,ig,ko,lo,my,ps,so,vi,zh-CN', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
