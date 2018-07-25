@@ -40,7 +40,6 @@ namespace IceTracker.Controllers
     
         }
 
-
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
@@ -51,6 +50,7 @@ namespace IceTracker.Controllers
             }
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
+
         [HttpGet("/users/{id}")]
         public IActionResult UserAccount(int id)
         {

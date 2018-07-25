@@ -111,11 +111,12 @@ li {
     height: 500px;
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 3rem
 }
 
 .feed {
-    width: 25%;
-    margin-left: 4.5%;
+    width: 28%;
+    margin-left: 1.5%;
     display: inline-block;
     vertical-align: top;
 }
@@ -139,4 +140,84 @@ li {
 
 .bolder {
     font-weight:700;
+}
+
+#feed-header {
+    background-color: #373a3c;
+    font-family: 'Anton', sans-serif;
+    padding: 13px
+}
+
+    #feed-header h3 {
+        color: white;
+        letter-spacing: .5px;
+        margin-bottom: 0px;
+        font-size: 22px
+    }
+
+
+.feed .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 11px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 19px;
+    font-weight: 700;
+     border-bottom: 1px solid #cccccc
+}
+.feed .active {
+    background-color: #ccc;
+    border: 1px solid black;
+    border-bottom: 0;
+}
+
+.feed .accordion:hover {
+    background-color: #373a3c;
+    color: white;
+}
+
+
+.feed .panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid black;
+    border-top: 0;
+    border-radius: 0;
+    margin-bottom: 0px;
+     padding: 10px 18px 0
+}
+
+.feed .accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px
+}
+
+.feed .active:after {
+    content: "\2796"
+}
+
+.block-maker {
+    display: block;
+}
+
+#userSightingsHeader h3 {
+    font-family: 'Anton', sans-serif;
+    color: white;
+    letter-spacing: 0.5px
+}
+
+.userSightings h2 {
+    font-family: 'Anton', sans-serif
 }
