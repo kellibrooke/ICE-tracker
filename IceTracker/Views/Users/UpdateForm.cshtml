@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutAccount";
+}
+
+<h1>Update Account</h1>
+
+<form action="/users/@Model["user"].Id/updateAccount" method="post">
+    
+    <label for="firstName">First Name</label>
+    <input name="firstName" type="text" value=@Model["user"].FirstName placeholder=@Model["user"].FirstName />
+
+    <label for="lastName">Last Name</label>
+    <input name="lastName" type="text" value=@Model["user"].LastName placeholder=@Model["user"].LastName />
+
+    <label for="phone">Phone Number</label>
+    <input name="phone" type="number" value=@Model["user"].PhoneNumber placeholder=@Model["user"].PhoneNumber />
+
+    <button type="submit">Update Account</button>
+
+</form> 
+
+<a href="/users/@Model["user"].Id/delete" class="btn btn-primary">Delete My Account</a>
+
+
+
+
+
+

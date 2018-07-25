@@ -187,5 +187,45 @@ namespace IceTracker.Models
 
             return foundUser;
         }
+
+        public static void Update(string newFirstName, string newLastName, string newPhone, int userId)
+        {
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE users SET phone_number = @NewPhone, first_name = @NewFirst, last_name =@NewLast WHERE id = @UserId";
+
+            cmd.Parameters.AddWithValue("@NewPhone", newPhone);
+            cmd.Parameters.AddWithValue("@NewFirst", newFirstName);
+            cmd.Parameters.AddWithValue("@NewLast", newLastName);
+            cmd.Parameters.AddWithValue("@UserId", userId);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+
+        public static void Delete(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM users WHERE id = @UserId;";
+
+            cmd.Parameters.AddWithValue("@UserId", id);
+
+            cmd.ExecuteNonQuery();
+            if (conn != null)
+            {
+                conn.Close();
+            }
+        }
     }
 }

@@ -33,13 +33,34 @@ namespace IceTracker.Controllers
             return RedirectToAction("UserAccount", new { id = newUser.Id });
         }
 
-        [HttpGet("/users/login")]
-        public IActionResult Login()
+        [HttpGet("/users/{id}/delete")]
+        public IActionResult DeleteUser(int id)
         {
-            return View();  
-    
+            IceTracker.Models.User.Delete(id);
+            return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet("/users/{id}/updateAccount/")]
+        public IActionResult UpdateForm(int id)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object>();
+            User newUser = IceTracker.Models.User.FindAUserById(id);
+            string allSightings = Sighting.GetSightings();
+            List<Sighting> sightingsList = Sighting.GetSightingsList();
+            model.Add("user", newUser);
+            model.Add("sightings", allSightings);
+            model.Add("sightingsList", sightingsList);
+        
+            return View(model);
+        }
+
+        [HttpPost("/users/{userId}/updateAccount")]
+        public IActionResult Update(string firstName, string lastName, string phone, int userId)
+        {
+            IceTracker.Models.User.Update(firstName, lastName, phone, userId);
+            return RedirectToAction("UserAccount", new { id = userId });
+        }
+        
         [HttpPost("/users/login")]
         public IActionResult AccountLogin(string phoneNumber)
         {
