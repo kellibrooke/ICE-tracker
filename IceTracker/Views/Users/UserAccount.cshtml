@@ -11,9 +11,10 @@
 <h3>Phone #: <span class="bolder">@Model["user"].PhoneNumber</span></h3>
 
 <a href="/sightings/@Model["user"].Id/save" class="btn btn-primary">Post New Raid</a>
+<a href="/users/@Model["user"].Id/updateAccount" class="btn btn-primary">Manage Account</a>
 
 <div class="userSightings">
-    <h2>@Model["user"].FirstName's Sightings Submitted:</h2>
+    <h2>@Model["user"].FirstName's Sightings</h2>
 <div class="row" id="userSightingsHeader">
     <div class="col-sm-2">
         <h3>Date/Time</h3>
@@ -32,7 +33,7 @@
     {
         <div class="row">
             <div class="col-sm-2">
-                @sighting.Time.ToString("MM/dd/yyyy h:mm tt")
+                @sighting.Time.ToString("MM/dd/yy h:mm tt")
             </div>
             <div class="col-sm-2">
                 @sighting.Type
@@ -44,30 +45,23 @@
                 @sighting.Description
             </div>
         </div>
-
     }
 </div>
 
  <div id="dvMap2">
     </div>
  <div class="feed" >
+    <div id="feed-header">
+        <h3>Recent Sightings Feed</h3>
+    </div>
     @foreach (var sighting in Model["sightingsList"])
     {
-        <div class="row">
-            <div class="col-sm-2">
-                @sighting.Time.ToString("MM/dd/yyyy h:mm tt")
-            </div>
-            <div class="col-sm-2">
-                @sighting.Type
-            </div>
-            <div class="col-sm-4">
-                @sighting.Address, @sighting.City, @sighting.State
-            </div>
-            <div class="col-sm-4">
-                @sighting.Description
-            </div>
+        <button class="accordion">@sighting.Time.ToString("MM/dd h:mm tt")</button>
+        <div class="panel">
+          <p>Location: @sighting.Address, @sighting.City</p>
+          <p>Type: @sighting.Type</p>
+          <p>Description: @sighting.Description</p>
         </div>
-
     }
     </div> 
 <div id="google_translate_element"></div>
