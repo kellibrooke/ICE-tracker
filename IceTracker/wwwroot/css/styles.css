@@ -87,12 +87,17 @@ label {
     padding-top: 50px;
 }
 
+.btn:hover {
+    background-color: #884C43;
+    border-color: #884C43;
+}
 .btn {
     font-size: 18px;
     margin: 10px;
     background-color: #BA4C44;
     border-color: #BA4C44;
     font-family: 'Anton', sans-serif;
+    border-radius: 5px;
 }
 
 h1 {

@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Home/About_LoggedIn.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/wwwroot/css/styles.css">
     <Files>
       <File FileName="IceTracker/Views/Users/CreateAccount.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Users/Login.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/wwwroot/css/styles.css" Line="64" Column="9" />
-      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="37" Column="34" />
+      <File FileName="IceTracker/wwwroot/css/styles.css" Line="91" Column="30" />
+      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="55" Column="28" />
       <File FileName="IceTracker/Views/Home/About.cshtml" Line="26" Column="1" />
       <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Home/Contact.cshtml" Line="1" Column="1" />
