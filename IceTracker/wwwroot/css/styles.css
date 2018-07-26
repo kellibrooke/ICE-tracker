@@ -109,7 +109,7 @@ h1 {
 
 h2 {
     font-size: 22px;
-    font-family: 'Anton', sans-serif
+
 }
 
 .fist {
@@ -157,7 +157,7 @@ li {
 }
 
 #breakspace {
-    margin: 0 auto 25px
+     margin: 0 auto 25px
 }
 
 .feed {
@@ -170,7 +170,8 @@ li {
     overflow: scroll
 }
 #titleForRaid {
-    margin-top:20px;
+    margin-top: 20px;
+    font-family: 'Anton', sans-serif
 }
 
 .userSightings {
