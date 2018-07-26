@@ -160,7 +160,7 @@ li {
     margin-left: 1.5%;
     display: inline-block;
     vertical-align: top;
-    min-height: 500px;
+    height: 500px;
     background: #eee;
     overflow: scroll
 }
