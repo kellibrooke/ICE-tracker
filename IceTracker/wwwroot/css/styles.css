@@ -109,6 +109,7 @@ h1 {
 
 h2 {
     font-size: 22px;
+    font-family: 'Anton', sans-serif
 }
 
 .fist {
@@ -155,6 +156,10 @@ li {
     margin-bottom: 3rem
 }
 
+#breakspace {
+    margin: 0 auto 25px
+}
+
 .feed {
     width: 28%;
     margin-left: 1.5%;
@@ -164,17 +169,19 @@ li {
     background: #eee;
     overflow: scroll
 }
-
-.userSightings{
-    margin: 2rem 0
-    
+#titleForRaid {
+    margin-top:20px;
 }
 
-.userSightings .col-sm-2,
-.userSightings .col-sm-4 {
-    border: 1px solid black;
-    padding: 10px 0;
+.userSightings {
+    margin: 1.5rem 0 2rem 0
 }
+
+    .userSightings .col-sm-2,
+    .userSightings .col-sm-4 {
+        border: 1px solid #bfbfbf;
+        padding: 10px 0
+    }
 
 #userSightingsHeader{
     background: #BA4C44;
@@ -261,10 +268,6 @@ li {
     font-family: 'Anton', sans-serif;
     color: white;
     letter-spacing: 0.5px
-}
-
-.userSightings h2 {
-    font-family: 'Anton', sans-serif
 }
 * {
     box-sizing: border-box

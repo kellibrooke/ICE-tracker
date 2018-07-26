@@ -5,7 +5,8 @@
     Layout = "_LayoutAccount";
 }
 
-<h1>Account Details</h1>
+<h1>ACCOUNT DETAILS</h1>
+<hr id="breakspace">
 
 <h3>Name: <span class="bolder">@Model["user"].FirstName @Model["user"].LastName</span></h3>
 <h3>Phone #: <span class="bolder">@Model["user"].PhoneNumber</span></h3>
@@ -13,8 +14,8 @@
 <a href="/sightings/@Model["user"].Id/save" class="btn btn-primary">Post New Raid</a>
 <a href="/users/@Model["user"].Id/updateAccount" class="btn btn-primary">Manage Account</a>
 
+    <h2 id="titleForRaid">@Model["user"].FirstName's Reported Raids</h2>
 <div class="userSightings">
-    <h2>@Model["user"].FirstName's Reported Raids</h2>
 <div class="row" id="userSightingsHeader">
     <div class="col-sm-2">
         <h3>Date/Time</h3>
