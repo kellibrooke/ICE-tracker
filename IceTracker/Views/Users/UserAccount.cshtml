@@ -14,7 +14,7 @@
 <a href="/users/@Model["user"].Id/updateAccount" class="btn btn-primary">Manage Account</a>
 
 <div class="userSightings">
-    <h2>@Model["user"].FirstName's Sightings</h2>
+    <h2>@Model["user"].FirstName's Reported Raids</h2>
 <div class="row" id="userSightingsHeader">
     <div class="col-sm-2">
         <h3>Date/Time</h3>
@@ -52,7 +52,7 @@
     </div>
  <div class="feed" >
     <div id="feed-header">
-        <h3>Recent Sightings Feed</h3>
+        <h3>Recent Raid Feed</h3>
     </div>
     @foreach (var sighting in Model["sightingsList"])
     {
