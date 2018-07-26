@@ -1,17 +1,18 @@
 ﻿<Properties StartupConfiguration="{BFB6CC35-9A74-4572-B8B6-CDE3D169DB9D}|Default">
   <MonoDevelop.Ide.ItemProperties.IceTracker PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Users/UpdateForm.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="IceTracker/Views/Home/About_LoggedIn.cshtml">
     <Files>
       <File FileName="IceTracker/Views/Users/CreateAccount.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Users/Login.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/wwwroot/css/styles.css" Line="64" Column="9" />
-      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/Views/Home/About.cshtml" Line="1" Column="1" />
+      <File FileName="IceTracker/Views/Sightings/CreateForm.cshtml" Line="37" Column="34" />
+      <File FileName="IceTracker/Views/Home/About.cshtml" Line="26" Column="1" />
       <File FileName="IceTracker/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Home/Contact.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Home/Index.cshtml" Line="1" Column="1" />
       <File FileName="IceTracker/Views/Sightings/Index.cshtml" Line="1" Column="1" />
-      <File FileName="IceTracker/Views/Users/UpdateForm.cshtml" Line="8" Column="19" />
+      <File FileName="IceTracker/Views/Users/UpdateForm.cshtml" Line="1" Column="1" />
+      <File FileName="IceTracker/Views/Home/About_LoggedIn.cshtml" Line="36" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
