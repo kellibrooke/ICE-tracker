@@ -2,13 +2,22 @@
     ViewData["Title"] = "Log In";
 }
 <div class="center">
-    <h1>My Account</h1>
+    <h1>WELCOME BACK</h1>
+    <hr />
+    <p>Please enter your phone number to sign in to your account.</p>
     <form action="/users/login" method="post">
         <div class="form-group">
             <label for="phoneNumber">Phone Number:</label><br />
-            <input type="text" name="phoneNumber" placeholder="(503)-123-4567">
+            <input type="number" name="phoneNumber" placeholder="5031234567">
         </div>
         <button class="btn btn-danger" type="submit">Login</button>
         <a href="/users/register" class="btn btn-danger">Sign Up</a>
     </form>
 </div>
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

@@ -2,44 +2,106 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "_LayoutAccount";
 }
 
-<h1>Account Details</h1>
-<h4>Name</h4>
-<p>@Model.FirstName @Model.LastName</p>
-<h4>Raid Sightings Submitted:</h4>
-<div class="row">
+<h1>ACCOUNT DETAILS</h1>
+<hr id="breakspace">
+
+<h3>Name: <span class="bolder">@Model["user"].FirstName @Model["user"].LastName</span></h3>
+<h3>Phone #: <span class="bolder">@Model["user"].PhoneNumber</span></h3>
+
+<a href="/sightings/@Model["user"].Id/save" class="btn btn-primary">Post New Raid</a>
+<a href="/users/@Model["user"].Id/updateAccount" class="btn btn-primary">Manage Account</a>
+
+    <h2 id="titleForRaid">@Model["user"].FirstName's Reported Raids</h2>
+<div class="userSightings">
+<div class="row" id="userSightingsHeader">
     <div class="col-sm-2">
-        <h4>Date/Time</h4>
+        <h3>Date/Time</h3>
     </div>
     <div class="col-sm-2">
-        <h4>Type</h4>
+        <h3>Type</h3>
     </div>
     <div class="col-sm-4">
-        <h4>Location</h4>
+        <h3>Location</h3>
     </div>
     <div class="col-sm-4">
-        <h4>Description</h4>
+        <h3>Description</h3>
     </div>
 </div>
-
-    @foreach (var sighting in Model.GetAllUserSightings())
+    @foreach (var sighting in Model["user"].GetAllUserSightings())
     {
         <div class="row">
             <div class="col-sm-2">
-                @sighting.Time
+                @sighting.Time.ToString("MM/dd/yy h:mm tt")
             </div>
             <div class="col-sm-2">
                 @sighting.Type
             </div>
             <div class="col-sm-4">
-                @sighting.Address, @sighting.City, @sighting.State, @sighting.Zip
+                @sighting.Address, @sighting.City, @sighting.State
             </div>
             <div class="col-sm-4">
                 @sighting.Description
             </div>
         </div>
-
     }
+</div>
 
-<a href="/sightings/@Model.Id/save">Post New Raid</a>
+ <div id="dvMap2">
+    </div>
+ <div class="feed" >
+    <div id="feed-header">
+        <h3>Recent Raid Feed</h3>
+    </div>
+    @foreach (var sighting in Model["sightingsList"])
+    {
+        <button class="accordion">@sighting.Time.ToString("MM/dd h:mm tt")</button>
+        <div class="panel">
+          <p>Location: @sighting.Address, @sighting.City</p>
+          <p>Type: @sighting.Type</p>
+          <p>Description: @sighting.Description</p>
+        </div>
+    }
+    </div> 
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div> 
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8"></script>
+    <script type="text/javascript">
+        var markers = @Html.Raw(Model["sightings"]);
+        window.onload = function () {
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("dvMap2"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title
+                });
+                (function (marker, data) {
+                    var content = "<strong>Date:</strong> " + data.time + " <br/>" + "<strong>Description:</strong> " + data.description + "<br><strong>Type:</strong> " + data.type + " <br/><strong>Address:</strong> " + data.address + ".";
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(content);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+        }
+    </script>
+
+

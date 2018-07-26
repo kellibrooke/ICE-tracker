@@ -1,11 +1,84 @@
-﻿body {
-    font-size: 14px;
+﻿input[type="text"] {
+    font-size: 18px;
     text-align: center;
 }
 
+textarea[placeholder] {
+    font-size: 18px;
+    text-align: center;
+}
+
+a {
+    color: #BA4C44;
+}
+
+
+input[placeholder] {
+    text-align: center;
+}
+
+.padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.first-col {
+    padding-left: 90px;
+}
+
+.join-button {
+    margin: 40px;
+}
+
+.anonymous {
+    padding-bottom: 35px;
+}
+
+body {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 0px;
+}
+
+.profile {
+    width: 50%;
+    padding-top: 40px;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+#nav-logo {
+    padding-bottom: 20px;
+}
+
+ul {
+    top: 0;
+}
+
+.limit {
+    max-width: 750px;
+}
+
+.form-control {
+    font-size: 16px;
+}
+
+select option {
+    font-size: 18pt;
+}
+
+label {
+    color: #5F6062;
+}
 .center {
     margin: auto;
-    width: 100%;
+    width: 75%;
     padding: 10px;
     text-align: center;
 }
@@ -14,19 +87,279 @@
     padding-top: 50px;
 }
 
+.btn:hover {
+    background-color: #884C43;
+    border-color: #884C43;
+}
 .btn {
-    font-size: 16px;
+    font-size: 18px;
     margin: 10px;
+    background-color: #BA4C44;
+    border-color: #BA4C44;
+    font-family: 'Anton', sans-serif;
+    border-radius: 5px;
+}
+
+h1 {
+    font-family: 'Anton', sans-serif;
+    color: #BA4C44;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 22px;
+
 }
 
 .fist {
     width: 15%;
 }
 
-navbar {
-    padding-top: -100px;
+#report-raid {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    padding: 10px 10px 10px 24px;
+    border-radius: 5px
+}
+
+hr {
+    background-color: #BA4C44;
+    width: 750px;
 }
 
 .jumbotron {
     background-color: #BA4C44;
+    font-family: 'Anton', sans-serif;
+    position: relative;
+    color: white;
+    letter-spacing: 5px;
+}
+
+h3 {
+    color: #383A3C;
+}
+
+textarea {
+    width: 100px;
+}
+
+li {
+    padding: 5px;
+}
+
+#dvMap2 {
+    width: 70%;
+    height: 500px;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 3rem
+}
+
+#breakspace {
+     margin: 0 auto 25px
+}
+
+.feed {
+    width: 28%;
+    margin-left: 1.5%;
+    display: inline-block;
+    vertical-align: top;
+    height: 500px;
+    background: #eee;
+    overflow: scroll
+}
+#titleForRaid {
+    margin-top: 20px;
+    font-family: 'Anton', sans-serif
+}
+
+.userSightings {
+    margin: 1.5rem 0 2rem 0
+}
+
+    .userSightings .col-sm-2,
+    .userSightings .col-sm-4 {
+        border: 1px solid #bfbfbf;
+        padding: 10px 0
+    }
+
+#userSightingsHeader{
+    background: #BA4C44;
+    color: white
+        
+}
+
+.bolder {
+    font-weight:700;
+}
+
+#feed-header {
+    background-color: #373a3c;
+    font-family: 'Anton', sans-serif;
+    padding: 13px
+}
+
+    #feed-header h3 {
+        color: rgba(255,255,255,0.5);
+        letter-spacing: .5px;
+        margin-bottom: 0px;
+        font-size: 22px
+    }
+
+
+.feed .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 11px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 19px;
+    font-weight: 700;
+     border-bottom: 1px solid #cccccc
+}
+.feed .active {
+    background-color: #ccc;
+    border: 1px solid black;
+    border-bottom: 0;
+    border-radius: 0px
+}
+
+.feed .accordion:hover {
+    background-color: #373a3c;
+    color: white;
+}
+
+
+.feed .panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid black;
+    border-top: 0;
+    border-radius: 0;
+    margin-bottom: 0px;
+     padding: 10px 18px 0
+}
+
+.feed .accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px
+}
+
+.feed .active:after {
+    content: "\2796"
+}
+
+.block-maker {
+    display: block;
+}
+
+#userSightingsHeader h3 {
+    font-family: 'Anton', sans-serif;
+    color: white;
+    letter-spacing: 0.5px
+}
+* {
+    box-sizing: border-box
+}
+
+.button {
+    display: inline-block;
+    font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    padding: .8em 1.4em;
+    padding-right: 4.7em;
+    background: #009ED8;
+    border: none;
+    color: white;
+    transition: .2s;
+    text-align: left;
+    min-width: 13em;
+}
+
+    .button:before,
+    .button:after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        width: 2.8em;
+        content: "\00a0";
+        font-family: 'FontAwesome', sans-serif;
+        font-size: 1.1em;
+        text-align: center;
+        transition: .2s;
+        transform-origin: 50% 60%
+    }
+
+    .button:before {
+        background: rgba(0, 0, 0, 0.1)
+    }
+
+    .button:hover {
+        background: #884c43
+    }
+
+    .button:active,
+    .button:focus {
+        background: #002e3f;
+        outline: none
+    }
+
+
+.arrow {
+    background: #BA4C44;
+    box-shadow: 1px 1px 3px black;
+}
+
+    .arrow:hover {
+        background: #884c43
+    }
+
+    .arrow:active,
+    .arrow:focus {
+        background: #b90c01
+    }
+
+    .arrow:after {
+        content: "\f0a1"
+    }
+
+    .arrow:hover:after {
+        -webkit-animation: bounceright .3s alternate ease infinite;
+        animation: bounceright .3s alternate ease infinite
+    }
+
+@-webkit-keyframes bounceright {
+    from {
+        -webkit-transform: translateX(0)
+    }
+
+    to {
+        -webkit-transform: translateX(3px)
+    }
+}
+
+@keyframes bounceright {
+    from {
+        transform: translateX(0)
+    }
+
+    to {
+        transform: translateX(3px)
+    }
 }

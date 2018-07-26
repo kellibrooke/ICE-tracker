@@ -2,11 +2,46 @@
     Layout = "_Layout";
     ViewData["Title"] = "Home";
 }
-    <div id="dvMap" style="width: 100%; height: 500px">
+
+    <div class="jumbotron">
+        <h1>ICE BREAKER</h1>
+        <h3>TRACKING, REPORTING, AND ALERTING THE PORTLAND COMMUNITY</h3>
     </div>
+
+    <h2>Have you witnessed ICE in your neighborhood? Help spread the word!</h2>
+    <a href="~/users/login" class="btn btn-danger button arrow" id="report-raid">REPORT AN ICE RAID</a>
+    <hr />
+    <h2>Click to explore our interactive, user-populated raid map below!</h2><br />
+
+
+<div id="dvMap2">
+    </div>
+ <div class="feed" >
+    <div id="feed-header">
+        <h3>Recent Raid Feed</h3>
+    </div>
+    @foreach (var sighting in Model["sightingsList"])
+    {
+        <button class="accordion">@sighting.Time.ToString("MM/dd h:mm tt")</button>
+        <div class="panel">
+          <p>Location: @sighting.Address, @sighting.City</p>
+          <p>Type: @sighting.Type</p>
+          <p>Description: @sighting.Description</p>
+        </div>
+    }
+    </div> 
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+}</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div> 
+
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtdAqKhJlXMN2ON9tmKuZQwndEI8dDWe8"></script>
     <script type="text/javascript">
-        var markers = @Html.Raw(Model);
+        var markers = @Html.Raw(Model["sightings"]);
         window.onload = function () {
             var mapOptions = {
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
@@ -14,7 +49,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var infoWindow = new google.maps.InfoWindow();
-            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            var map = new google.maps.Map(document.getElementById("dvMap2"), mapOptions);
             for (i = 0; i < markers.length; i++) {
                 var data = markers[i]
                 var myLatlng = new google.maps.LatLng(data.lat, data.lng);
@@ -24,12 +59,14 @@
                     title: data.title
                 });
                 (function (marker, data) {
+                    var content = "<strong>Date:</strong> " + data.time + " <br/>" + "<strong>Description:</strong> " + data.description + "<br><strong>Type:</strong> " + data.type + " <br/><strong>Address:</strong> " + data.address + ".";
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.address);
+                        infoWindow.setContent(content);
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);
             }
         }
     </script>
+
 
