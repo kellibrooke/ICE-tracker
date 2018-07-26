@@ -5,24 +5,35 @@
     Layout = "_LayoutAccount";
 }
 
-<h1>Update Account</h1>
+<h1>MANAGE ACCOUNT</h1>
+<div class="center row">
+    <form action="/users/@Model["user"].Id/updateAccount" method="post" class="center">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="firstName">First Name</label><br />
+                <input name="firstName" type="text" value=@Model["user"].FirstName placeholder=@Model["user"].FirstName />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label><br />
+                <input name="lastName" type="text" value=@Model["user"].LastName placeholder=@Model["user"].LastName />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="phone">Phone Number</label><br />
+                <input name="phone" type="number" value=@Model["user"].PhoneNumber placeholder=@Model["user"].PhoneNumber />
+                <br /><br />
+                <button type="submit" class="btn btn-primary">Update Account</button>
+            </div>
+        </div>
+    </form>
+</div>
 
-<form action="/users/@Model["user"].Id/updateAccount" method="post">
-    
-    <label for="firstName">First Name</label>
-    <input name="firstName" type="text" value=@Model["user"].FirstName placeholder=@Model["user"].FirstName />
-
-    <label for="lastName">Last Name</label>
-    <input name="lastName" type="text" value=@Model["user"].LastName placeholder=@Model["user"].LastName />
-
-    <label for="phone">Phone Number</label>
-    <input name="phone" type="number" value=@Model["user"].PhoneNumber placeholder=@Model["user"].PhoneNumber />
-
-    <button type="submit">Update Account</button>
-
-</form> 
-
-<a href="/users/@Model["user"].Id/delete" class="btn btn-primary">Delete My Account</a>
+<h1>WARNING</h1>
+<hr />
+<p>If you would no longer like to receive notifications,<br /> you may deactive your account to remove yourself from the database.</p>
+<p>NOTE: This action cannot be undone.</p>
+<a href="/users/@Model["user"].Id/delete" class="btn btn-primary">Deactivate Account</a>
 
 
 
