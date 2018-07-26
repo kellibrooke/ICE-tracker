@@ -172,14 +172,15 @@ li {
 
 .userSightings .col-sm-2,
 .userSightings .col-sm-4 {
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px 0;
+    border-radius: 5px;
+    max-width: 750px
 }
 
-#userSightingsHeader{
+#userSightingsHeader {
     background: #BA4C44;
-    color: white
-        
+    color: white;
 }
 
 .bolder {
