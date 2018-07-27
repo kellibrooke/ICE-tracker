@@ -14,7 +14,8 @@ _Information about Redad Alertas can be found at http://redadalertas.com_
 ## Setup/Installation Requirements
 
 * _Download project from the GitHub repo here: https://github.com/kellibrooke/ICE-tracker_
-* _Build the database user the ice_tracker.sql file_
+* _Download and import the ice_tracker.sql file into localhost_
+* _Open project file in Visual Studio and run in browser
 
 ## User Stories - MVP
 
